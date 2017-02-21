@@ -16,7 +16,9 @@ class CreateTableFriends extends Migration
         Schema::create('friends', function (Blueprint $table) {
 			$table->integer('user_id')->unsigned()->index();
 			$table->integer('friend_id')->unsigned()->index();
-			
+        });
+		
+        Schema::table('friends', function (Blueprint $table) {
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 			$table->foreign('friend_id')->references('id')->on('users')->onDelete('cascade');
         });

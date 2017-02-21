@@ -23,11 +23,13 @@ class CreateTableActivities extends Migration
 			$table->string('longitude');
 			$table->string('latitude');
 			$table->string('address');
-			
-			$table->foreign('creator_id')->references('id')->on('users')->onDelete('set null');
+			$table->timestamps();
+        });
+		
+		Schema::table('activities', function (Blueprint $table) {
+            $table->foreign('creator_id')->references('id')->on('users')->onDelete('set null');
 			$table->foreign('community_id')->references('id')->on('communities')->onDelete('set null');
 			$table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
-			$table->timestamps();
         });
     }
 

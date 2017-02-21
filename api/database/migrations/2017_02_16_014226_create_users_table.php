@@ -24,9 +24,11 @@ class CreateUsersTable extends Migration
 			$table->date('birthdate');
             $table->rememberToken();
             $table->timestamps();
-			
-			$table->foreign('nationality_id')->references('id')->on('nationalities')->onDelete('set null');
         });
+		
+		Schema::table('users', function (Blueprint $table) {
+			$table->foreign('nationality_id')->references('id')->on('nationalities')->onDelete('set null');
+		});
     }
 
     /**

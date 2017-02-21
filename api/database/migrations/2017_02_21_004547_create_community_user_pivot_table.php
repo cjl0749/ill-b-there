@@ -14,8 +14,11 @@ class CreateCommunityUserPivotTable extends Migration
     {
         Schema::create('community_user', function (Blueprint $table) {
             $table->integer('community_id')->unsigned()->index();
-            $table->foreign('community_id')->references('id')->on('communities')->onDelete('cascade');
             $table->integer('user_id')->unsigned()->index();
+        });
+		
+        Schema::table('community_user', function (Blueprint $table) {
+            $table->foreign('community_id')->references('id')->on('communities')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->primary(['community_id', 'user_id']);
         });

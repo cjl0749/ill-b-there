@@ -21,10 +21,12 @@ class CreateTableCommunities extends Migration
 			$table->string('email_filter')->nullable();
 			$table->boolean('requires_activation')->default(false);
             $table->timestamps();
-			
-			$table->foreign('creator_id')->references('id')->on('users')->onDelete('set null');
         });
-    }
+
+		Schema::table('communities', function (Blueprint $table) {
+			$table->foreign('creator_id')->references('id')->on('users')->onDelete('set null');
+		});
+	}
 
     /**
      * Reverse the migrations.
