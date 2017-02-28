@@ -77,8 +77,8 @@ class ActivityController extends Controller
 		]);
 
 		// Check if user is member of specified community
-		// TODO check if active is true
-		if ($request->has('community_id') && !Auth::user()->communities->contains($request->get('community_id')))
+		if ($request->has('community_id')
+			&& !Auth::user()->communities->contains($request->get('community_id')))
 			abort (403, trans('activites.cannot_create_activity_for_unjoined_community'));
 
 		// Retrieve location information
