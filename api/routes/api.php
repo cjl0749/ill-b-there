@@ -32,4 +32,6 @@ Route::group(['middleware' => ['auth:api']], function()
 		});
 	});
 	Route::resource('communities', 'CommunityController');
+	
+	Route::resource('activities', 'ActivityController');
 });

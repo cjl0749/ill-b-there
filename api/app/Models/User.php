@@ -32,5 +32,10 @@ class User extends Authenticatable
 	{
 		return $this->belongsToMany(Community::class);
 	}
+	
+	public function activities()
+	{
+		return $this->belongsToMany(Activity::class);
+	}
 
 }
