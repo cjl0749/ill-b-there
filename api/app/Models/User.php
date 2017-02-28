@@ -18,24 +18,29 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token', 'nationality_id'
     ];
-	
+
 	protected $dates = [
 		'birthdate',
 	];
-	
+
 	public function nationality()
 	{
 		return $this->belongsTo(Nationality::class);
 	}
-	
+
 	public function communities()
 	{
-		return $this->belongsToMany(Community::class);
+		return $this->belongsToMany(Community::class)->wherePivot('active', true);
 	}
-	
+
+	public function applications()
+	{
+		return $this->belongsToMany(Community::class)->wherePivot('active', false);
+	}
+
 	public function activities()
 	{
-		return $this->belongsToMany(Activity::class);
+		return $this->belongsToMany(Activity::class)->orderBy('event_at', 'DESC');
 	}
 
 }

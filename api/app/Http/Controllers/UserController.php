@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
 use App\Models\Nationality;
@@ -11,7 +12,7 @@ use App\Models\Nationality;
 class UserController extends Controller
 {
 	private $genders = ['male', 'female', 'unknown'];
-	
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +21,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::with('nationality')->get();
-		
+
 		return $users;
     }
 
@@ -56,7 +57,7 @@ class UserController extends Controller
 			'nationality_id' => 'exists:nationalities,id',
 			'birthdate' => 'required|date',
 		]);
-		
+
 		$user = new User();
 		$user->firstname = $request->get('firstname');
 		$user->lastname = $request->get('lastname');
@@ -66,7 +67,7 @@ class UserController extends Controller
 		$user->nationality_id = $request->get('nationality_id');
 		$user->birthdate = $request->get('birthdate');
 		$user->save();
-		
+
 		return $user;
     }
 
@@ -79,11 +80,25 @@ class UserController extends Controller
     public function show(User $user)
     {
 		$this->authorize('view', $user);
-		
+
 		$user->load(['nationality']);
-		
+
         return $user;
     }
+
+	/**
+	 * Display the user profile
+	 *
+     * @return \Illuminate\Http\Response
+	 */
+	public function profile()
+	{
+		$user = Auth::user();
+
+		$user->load(['communities', 'applications', 'activities']);
+
+		return $user;
+	}
 
     /**
      * Show the form for editing the specified resource.
@@ -94,9 +109,9 @@ class UserController extends Controller
     public function edit(User $user)
     {
 		$this->authorize('update', $user);
-		
+
 		$user->load(['nationality']);
-		
+
         $nationalities = Nationality::get();
 
 		return [
@@ -116,7 +131,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
 		$this->authorize('update', $user);
-		
+
         $this->validate($request, [
 			'firstname' => '',
 			'lastname' => '',
@@ -126,7 +141,7 @@ class UserController extends Controller
 			'nationality_id' => 'exists:nationalities,id',
 			'birthdate' => 'date',
 		]);
-		
+
 		if ($request->has('firstname'))
 			$user->firstname = $request->get('firstname');
 		if ($request->has('lastname'))
@@ -142,7 +157,7 @@ class UserController extends Controller
 		if ($request->has('birthdate'))
 			$user->birthdate = $request->get('birthdate');
 		$user->save();
-		
+
 		return $user;
     }
 

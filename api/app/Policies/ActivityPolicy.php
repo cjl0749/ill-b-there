@@ -58,4 +58,28 @@ class ActivityPolicy
     {
         return $activity->creator_id === $user->id;
     }
+
+	/**
+     * Determine whether the user can join the activity.
+     *
+     * @param  \App\User  $user
+     * @param  \App\Models\Activity  $activity
+     * @return mixed
+     */
+    public function join(User $user, Activity $activity)
+    {
+		return !$activity->participants->contains($user->id);
+    }
+
+	/**
+     * Determine whether the user can leave the activity.
+     *
+     * @param  \App\User  $user
+     * @param  \App\Models\Activity  $activity
+     * @return mixed
+     */
+    public function leave(User $user, Activity $activity)
+    {
+		return $activity->participants->contains($user->id) && $activity->creator_id != $user->id;
+    }
 }
