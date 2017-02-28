@@ -136,6 +136,7 @@ return [
     */
 
     'providers' => [
+		
 
         /*
          * Laravel Framework Service Providers...
@@ -168,8 +169,10 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
 		Laravel\Passport\PassportServiceProvider::class,
+		
+		Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
 
-        /*
+		/*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,

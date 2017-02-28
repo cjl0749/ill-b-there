@@ -16,4 +16,20 @@ Route::resource('users', 'UserController', ['only' => ['create', 'store']]);
 Route::group(['middleware' => ['auth:api']], function()
 {
 	Route::resource('users', 'UserController', ['except' => ['create', 'store']]);
+	
+	Route::group(['prefix' => '/communities'], function()
+	{
+		Route::group(['prefix' => '/{community}'], function()
+		{
+			Route::get('/join', ['uses' => 'CommunityController@join']);
+			Route::get('/leave', ['uses' => 'CommunityController@leave']);
+			
+			Route::group(['prefix' => '/members/{user}'], function()
+			{
+				Route::get('/approve', ['uses' => 'CommunityController@approve']);
+				Route::get('/reject', ['uses' => 'CommunityController@reject']);
+			});
+		});
+	});
+	Route::resource('communities', 'CommunityController');
 });

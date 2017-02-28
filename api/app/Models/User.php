@@ -27,5 +27,10 @@ class User extends Authenticatable
 	{
 		return $this->belongsTo(Nationality::class);
 	}
+	
+	public function communities()
+	{
+		return $this->belongsToMany(Community::class);
+	}
 
 }
