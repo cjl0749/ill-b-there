@@ -16,6 +16,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'nationality_id'
     ];
+	
+	protected $dates = [
+		'birthdate',
+	];
+	
+	public function nationality()
+	{
+		return $this->belongsTo(Nationality::class);
+	}
+
 }
