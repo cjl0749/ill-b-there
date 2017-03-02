@@ -34,6 +34,7 @@ php artisan passport:install          # Generates the client keys for the OAuth2
 You have to launch those commands after every pull
 
 ```sh
+php artisan update           # Updates the Laravel packages
 php artisan migrate          # Updates the database structure
 ```
 
