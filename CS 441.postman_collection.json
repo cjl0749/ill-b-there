@@ -1,0 +1,426 @@
+{
+	"variables": [],
+	"info": {
+		"name": "CS 441",
+		"_postman_id": "6d36ece3-63e4-e5bd-5b29-adc5f6a0905d",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List users",
+			"request": {
+				"url": "http://api.dev.cs441.lan/api/users",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjU1ZjYwMjZlZGVmZjIxODNhZjRlMmY5NDQyZGIwYjMwZjg0YzA1MmIxY2M0MTFmODY5ZDlmZTA5NzM2MjEzNDc4ZDc3YmY3YmM0YTY4NzIwIn0.eyJhdWQiOiIyIiwianRpIjoiNTVmNjAyNmVkZWZmMjE4M2FmNGUyZjk0NDJkYjBiMzBmODRjMDUyYjFjYzQxMWY4NjlkOWZlMDk3MzYyMTM0NzhkNzdiZjdiYzRhNjg3MjAiLCJpYXQiOjE0ODgyNjA5NjEsIm5iZiI6MTQ4ODI2MDk2MSwiZXhwIjoxNTE5Nzk2OTYxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.OnGRGvuSSBRu3gJrELU5gPTVblbkO_7c8AJ94Rv2QnA3VrK11WB9BvgxfsBJH45n9HV1bceQukZmmD78NzxM73jS5nKvPO3xkfy8hMczJSEkxLVv6-3iDByX0Me69z6QJ1KGhSAK1Ef9jqDU93zryRyzkXu6gQXb66-YX6ANFReant0XzzrV0wAMegvHvdOWH3AzsHavA4w7ByhWXI8ZeAE8GmMvf-wD6_4Vpmy3pIx_ics6pPyDvkdxXjCe1o2l7trDY0bX7AWZJc0KEqkX0jHTFjesVr2BUMd05rxqs8lc0M_J7aBtL-qk31g5xqgNCKQOg8YZ6FTLAvtbRWIYzCEZNT-OCRGwh18hIqvZHT1tI0lGxoa6cvU6tnl5mcslw_NuuYrdp6pmpIqqiSTinJeIcM4x30mjBRYk6acebAZt1ab4N1XHmNNmHprFewuOvOpyxvDClvGFJN361mI3zSxUCuFievRRI6UxGAxF1Szuez7nnxQqaAp_s0ibQjnE0G5PrfUq50M-ojzOCaV2U16Oli9a8WS-Joms2TuXnGieIiqcKmYA2v7ZFh665OZ5r8XZhP8Q1LCJ5xR8oCSJeXWmjgYCyLls6L14Bc-wR7eKgfVkNxUzWM-Y98WupmzmN9_PKocalzbByD1N-LDfv8VOWhfcQ3fVMw6KPCAVxlM",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate",
+			"request": {
+				"url": "http://api.dev.cs441.lan/oauth/token",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text",
+							"enabled": true,
+							"warning": ""
+						},
+						{
+							"key": "client_id",
+							"value": "2",
+							"type": "text",
+							"enabled": true,
+							"warning": ""
+						},
+						{
+							"key": "client_secret",
+							"value": "AeGOzoGN3DEa8zTi3Fe2V0RRtj0Uvm6DENukLFH6",
+							"type": "text",
+							"enabled": true,
+							"warning": ""
+						},
+						{
+							"key": "scope",
+							"value": "",
+							"type": "text",
+							"enabled": true,
+							"warning": ""
+						},
+						{
+							"key": "username",
+							"value": "tparker@example.com",
+							"type": "text",
+							"enabled": true,
+							"warning": ""
+						},
+						{
+							"key": "password",
+							"value": "secret",
+							"type": "text",
+							"enabled": true,
+							"warning": ""
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Show user creation form",
+			"request": {
+				"url": "http://api.dev.cs441.lan/api/users/create",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "List communities",
+			"request": {
+				"url": "http://api.dev.cs441.lan/api/communities",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjU1ZjYwMjZlZGVmZjIxODNhZjRlMmY5NDQyZGIwYjMwZjg0YzA1MmIxY2M0MTFmODY5ZDlmZTA5NzM2MjEzNDc4ZDc3YmY3YmM0YTY4NzIwIn0.eyJhdWQiOiIyIiwianRpIjoiNTVmNjAyNmVkZWZmMjE4M2FmNGUyZjk0NDJkYjBiMzBmODRjMDUyYjFjYzQxMWY4NjlkOWZlMDk3MzYyMTM0NzhkNzdiZjdiYzRhNjg3MjAiLCJpYXQiOjE0ODgyNjA5NjEsIm5iZiI6MTQ4ODI2MDk2MSwiZXhwIjoxNTE5Nzk2OTYxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.OnGRGvuSSBRu3gJrELU5gPTVblbkO_7c8AJ94Rv2QnA3VrK11WB9BvgxfsBJH45n9HV1bceQukZmmD78NzxM73jS5nKvPO3xkfy8hMczJSEkxLVv6-3iDByX0Me69z6QJ1KGhSAK1Ef9jqDU93zryRyzkXu6gQXb66-YX6ANFReant0XzzrV0wAMegvHvdOWH3AzsHavA4w7ByhWXI8ZeAE8GmMvf-wD6_4Vpmy3pIx_ics6pPyDvkdxXjCe1o2l7trDY0bX7AWZJc0KEqkX0jHTFjesVr2BUMd05rxqs8lc0M_J7aBtL-qk31g5xqgNCKQOg8YZ6FTLAvtbRWIYzCEZNT-OCRGwh18hIqvZHT1tI0lGxoa6cvU6tnl5mcslw_NuuYrdp6pmpIqqiSTinJeIcM4x30mjBRYk6acebAZt1ab4N1XHmNNmHprFewuOvOpyxvDClvGFJN361mI3zSxUCuFievRRI6UxGAxF1Szuez7nnxQqaAp_s0ibQjnE0G5PrfUq50M-ojzOCaV2U16Oli9a8WS-Joms2TuXnGieIiqcKmYA2v7ZFh665OZ5r8XZhP8Q1LCJ5xR8oCSJeXWmjgYCyLls6L14Bc-wR7eKgfVkNxUzWM-Y98WupmzmN9_PKocalzbByD1N-LDfv8VOWhfcQ3fVMw6KPCAVxlM",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create community",
+			"request": {
+				"url": "http://api.dev.cs441.lan/api/communities",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjU1ZjYwMjZlZGVmZjIxODNhZjRlMmY5NDQyZGIwYjMwZjg0YzA1MmIxY2M0MTFmODY5ZDlmZTA5NzM2MjEzNDc4ZDc3YmY3YmM0YTY4NzIwIn0.eyJhdWQiOiIyIiwianRpIjoiNTVmNjAyNmVkZWZmMjE4M2FmNGUyZjk0NDJkYjBiMzBmODRjMDUyYjFjYzQxMWY4NjlkOWZlMDk3MzYyMTM0NzhkNzdiZjdiYzRhNjg3MjAiLCJpYXQiOjE0ODgyNjA5NjEsIm5iZiI6MTQ4ODI2MDk2MSwiZXhwIjoxNTE5Nzk2OTYxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.OnGRGvuSSBRu3gJrELU5gPTVblbkO_7c8AJ94Rv2QnA3VrK11WB9BvgxfsBJH45n9HV1bceQukZmmD78NzxM73jS5nKvPO3xkfy8hMczJSEkxLVv6-3iDByX0Me69z6QJ1KGhSAK1Ef9jqDU93zryRyzkXu6gQXb66-YX6ANFReant0XzzrV0wAMegvHvdOWH3AzsHavA4w7ByhWXI8ZeAE8GmMvf-wD6_4Vpmy3pIx_ics6pPyDvkdxXjCe1o2l7trDY0bX7AWZJc0KEqkX0jHTFjesVr2BUMd05rxqs8lc0M_J7aBtL-qk31g5xqgNCKQOg8YZ6FTLAvtbRWIYzCEZNT-OCRGwh18hIqvZHT1tI0lGxoa6cvU6tnl5mcslw_NuuYrdp6pmpIqqiSTinJeIcM4x30mjBRYk6acebAZt1ab4N1XHmNNmHprFewuOvOpyxvDClvGFJN361mI3zSxUCuFievRRI6UxGAxF1Szuez7nnxQqaAp_s0ibQjnE0G5PrfUq50M-ojzOCaV2U16Oli9a8WS-Joms2TuXnGieIiqcKmYA2v7ZFh665OZ5r8XZhP8Q1LCJ5xR8oCSJeXWmjgYCyLls6L14Bc-wR7eKgfVkNxUzWM-Y98WupmzmN9_PKocalzbByD1N-LDfv8VOWhfcQ3fVMw6KPCAVxlM",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "CSUSM Students",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "description",
+							"value": "A community for all CSUSM students!",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "email_filter",
+							"value": "cougars.csusm.edu",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Show first community",
+			"request": {
+				"url": "http://api.dev.cs441.lan/api/communities/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjU1ZjYwMjZlZGVmZjIxODNhZjRlMmY5NDQyZGIwYjMwZjg0YzA1MmIxY2M0MTFmODY5ZDlmZTA5NzM2MjEzNDc4ZDc3YmY3YmM0YTY4NzIwIn0.eyJhdWQiOiIyIiwianRpIjoiNTVmNjAyNmVkZWZmMjE4M2FmNGUyZjk0NDJkYjBiMzBmODRjMDUyYjFjYzQxMWY4NjlkOWZlMDk3MzYyMTM0NzhkNzdiZjdiYzRhNjg3MjAiLCJpYXQiOjE0ODgyNjA5NjEsIm5iZiI6MTQ4ODI2MDk2MSwiZXhwIjoxNTE5Nzk2OTYxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.OnGRGvuSSBRu3gJrELU5gPTVblbkO_7c8AJ94Rv2QnA3VrK11WB9BvgxfsBJH45n9HV1bceQukZmmD78NzxM73jS5nKvPO3xkfy8hMczJSEkxLVv6-3iDByX0Me69z6QJ1KGhSAK1Ef9jqDU93zryRyzkXu6gQXb66-YX6ANFReant0XzzrV0wAMegvHvdOWH3AzsHavA4w7ByhWXI8ZeAE8GmMvf-wD6_4Vpmy3pIx_ics6pPyDvkdxXjCe1o2l7trDY0bX7AWZJc0KEqkX0jHTFjesVr2BUMd05rxqs8lc0M_J7aBtL-qk31g5xqgNCKQOg8YZ6FTLAvtbRWIYzCEZNT-OCRGwh18hIqvZHT1tI0lGxoa6cvU6tnl5mcslw_NuuYrdp6pmpIqqiSTinJeIcM4x30mjBRYk6acebAZt1ab4N1XHmNNmHprFewuOvOpyxvDClvGFJN361mI3zSxUCuFievRRI6UxGAxF1Szuez7nnxQqaAp_s0ibQjnE0G5PrfUq50M-ojzOCaV2U16Oli9a8WS-Joms2TuXnGieIiqcKmYA2v7ZFh665OZ5r8XZhP8Q1LCJ5xR8oCSJeXWmjgYCyLls6L14Bc-wR7eKgfVkNxUzWM-Y98WupmzmN9_PKocalzbByD1N-LDfv8VOWhfcQ3fVMw6KPCAVxlM",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Join first community",
+			"request": {
+				"url": "http://api.dev.cs441.lan/api/communities/1/join",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjU1ZjYwMjZlZGVmZjIxODNhZjRlMmY5NDQyZGIwYjMwZjg0YzA1MmIxY2M0MTFmODY5ZDlmZTA5NzM2MjEzNDc4ZDc3YmY3YmM0YTY4NzIwIn0.eyJhdWQiOiIyIiwianRpIjoiNTVmNjAyNmVkZWZmMjE4M2FmNGUyZjk0NDJkYjBiMzBmODRjMDUyYjFjYzQxMWY4NjlkOWZlMDk3MzYyMTM0NzhkNzdiZjdiYzRhNjg3MjAiLCJpYXQiOjE0ODgyNjA5NjEsIm5iZiI6MTQ4ODI2MDk2MSwiZXhwIjoxNTE5Nzk2OTYxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.OnGRGvuSSBRu3gJrELU5gPTVblbkO_7c8AJ94Rv2QnA3VrK11WB9BvgxfsBJH45n9HV1bceQukZmmD78NzxM73jS5nKvPO3xkfy8hMczJSEkxLVv6-3iDByX0Me69z6QJ1KGhSAK1Ef9jqDU93zryRyzkXu6gQXb66-YX6ANFReant0XzzrV0wAMegvHvdOWH3AzsHavA4w7ByhWXI8ZeAE8GmMvf-wD6_4Vpmy3pIx_ics6pPyDvkdxXjCe1o2l7trDY0bX7AWZJc0KEqkX0jHTFjesVr2BUMd05rxqs8lc0M_J7aBtL-qk31g5xqgNCKQOg8YZ6FTLAvtbRWIYzCEZNT-OCRGwh18hIqvZHT1tI0lGxoa6cvU6tnl5mcslw_NuuYrdp6pmpIqqiSTinJeIcM4x30mjBRYk6acebAZt1ab4N1XHmNNmHprFewuOvOpyxvDClvGFJN361mI3zSxUCuFievRRI6UxGAxF1Szuez7nnxQqaAp_s0ibQjnE0G5PrfUq50M-ojzOCaV2U16Oli9a8WS-Joms2TuXnGieIiqcKmYA2v7ZFh665OZ5r8XZhP8Q1LCJ5xR8oCSJeXWmjgYCyLls6L14Bc-wR7eKgfVkNxUzWM-Y98WupmzmN9_PKocalzbByD1N-LDfv8VOWhfcQ3fVMw6KPCAVxlM",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Approve member on 2nd community",
+			"request": {
+				"url": "http://api.dev.cs441.lan/api/communities/2/members/2/approve",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjU1ZjYwMjZlZGVmZjIxODNhZjRlMmY5NDQyZGIwYjMwZjg0YzA1MmIxY2M0MTFmODY5ZDlmZTA5NzM2MjEzNDc4ZDc3YmY3YmM0YTY4NzIwIn0.eyJhdWQiOiIyIiwianRpIjoiNTVmNjAyNmVkZWZmMjE4M2FmNGUyZjk0NDJkYjBiMzBmODRjMDUyYjFjYzQxMWY4NjlkOWZlMDk3MzYyMTM0NzhkNzdiZjdiYzRhNjg3MjAiLCJpYXQiOjE0ODgyNjA5NjEsIm5iZiI6MTQ4ODI2MDk2MSwiZXhwIjoxNTE5Nzk2OTYxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.OnGRGvuSSBRu3gJrELU5gPTVblbkO_7c8AJ94Rv2QnA3VrK11WB9BvgxfsBJH45n9HV1bceQukZmmD78NzxM73jS5nKvPO3xkfy8hMczJSEkxLVv6-3iDByX0Me69z6QJ1KGhSAK1Ef9jqDU93zryRyzkXu6gQXb66-YX6ANFReant0XzzrV0wAMegvHvdOWH3AzsHavA4w7ByhWXI8ZeAE8GmMvf-wD6_4Vpmy3pIx_ics6pPyDvkdxXjCe1o2l7trDY0bX7AWZJc0KEqkX0jHTFjesVr2BUMd05rxqs8lc0M_J7aBtL-qk31g5xqgNCKQOg8YZ6FTLAvtbRWIYzCEZNT-OCRGwh18hIqvZHT1tI0lGxoa6cvU6tnl5mcslw_NuuYrdp6pmpIqqiSTinJeIcM4x30mjBRYk6acebAZt1ab4N1XHmNNmHprFewuOvOpyxvDClvGFJN361mI3zSxUCuFievRRI6UxGAxF1Szuez7nnxQqaAp_s0ibQjnE0G5PrfUq50M-ojzOCaV2U16Oli9a8WS-Joms2TuXnGieIiqcKmYA2v7ZFh665OZ5r8XZhP8Q1LCJ5xR8oCSJeXWmjgYCyLls6L14Bc-wR7eKgfVkNxUzWM-Y98WupmzmN9_PKocalzbByD1N-LDfv8VOWhfcQ3fVMw6KPCAVxlM",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Show activity creation form",
+			"request": {
+				"url": "http://api.dev.cs441.lan/api/activities/create",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjU1ZjYwMjZlZGVmZjIxODNhZjRlMmY5NDQyZGIwYjMwZjg0YzA1MmIxY2M0MTFmODY5ZDlmZTA5NzM2MjEzNDc4ZDc3YmY3YmM0YTY4NzIwIn0.eyJhdWQiOiIyIiwianRpIjoiNTVmNjAyNmVkZWZmMjE4M2FmNGUyZjk0NDJkYjBiMzBmODRjMDUyYjFjYzQxMWY4NjlkOWZlMDk3MzYyMTM0NzhkNzdiZjdiYzRhNjg3MjAiLCJpYXQiOjE0ODgyNjA5NjEsIm5iZiI6MTQ4ODI2MDk2MSwiZXhwIjoxNTE5Nzk2OTYxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.OnGRGvuSSBRu3gJrELU5gPTVblbkO_7c8AJ94Rv2QnA3VrK11WB9BvgxfsBJH45n9HV1bceQukZmmD78NzxM73jS5nKvPO3xkfy8hMczJSEkxLVv6-3iDByX0Me69z6QJ1KGhSAK1Ef9jqDU93zryRyzkXu6gQXb66-YX6ANFReant0XzzrV0wAMegvHvdOWH3AzsHavA4w7ByhWXI8ZeAE8GmMvf-wD6_4Vpmy3pIx_ics6pPyDvkdxXjCe1o2l7trDY0bX7AWZJc0KEqkX0jHTFjesVr2BUMd05rxqs8lc0M_J7aBtL-qk31g5xqgNCKQOg8YZ6FTLAvtbRWIYzCEZNT-OCRGwh18hIqvZHT1tI0lGxoa6cvU6tnl5mcslw_NuuYrdp6pmpIqqiSTinJeIcM4x30mjBRYk6acebAZt1ab4N1XHmNNmHprFewuOvOpyxvDClvGFJN361mI3zSxUCuFievRRI6UxGAxF1Szuez7nnxQqaAp_s0ibQjnE0G5PrfUq50M-ojzOCaV2U16Oli9a8WS-Joms2TuXnGieIiqcKmYA2v7ZFh665OZ5r8XZhP8Q1LCJ5xR8oCSJeXWmjgYCyLls6L14Bc-wR7eKgfVkNxUzWM-Y98WupmzmN9_PKocalzbByD1N-LDfv8VOWhfcQ3fVMw6KPCAVxlM",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Show first activity",
+			"request": {
+				"url": "http://api.dev.cs441.lan/api/activities/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjU1ZjYwMjZlZGVmZjIxODNhZjRlMmY5NDQyZGIwYjMwZjg0YzA1MmIxY2M0MTFmODY5ZDlmZTA5NzM2MjEzNDc4ZDc3YmY3YmM0YTY4NzIwIn0.eyJhdWQiOiIyIiwianRpIjoiNTVmNjAyNmVkZWZmMjE4M2FmNGUyZjk0NDJkYjBiMzBmODRjMDUyYjFjYzQxMWY4NjlkOWZlMDk3MzYyMTM0NzhkNzdiZjdiYzRhNjg3MjAiLCJpYXQiOjE0ODgyNjA5NjEsIm5iZiI6MTQ4ODI2MDk2MSwiZXhwIjoxNTE5Nzk2OTYxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.OnGRGvuSSBRu3gJrELU5gPTVblbkO_7c8AJ94Rv2QnA3VrK11WB9BvgxfsBJH45n9HV1bceQukZmmD78NzxM73jS5nKvPO3xkfy8hMczJSEkxLVv6-3iDByX0Me69z6QJ1KGhSAK1Ef9jqDU93zryRyzkXu6gQXb66-YX6ANFReant0XzzrV0wAMegvHvdOWH3AzsHavA4w7ByhWXI8ZeAE8GmMvf-wD6_4Vpmy3pIx_ics6pPyDvkdxXjCe1o2l7trDY0bX7AWZJc0KEqkX0jHTFjesVr2BUMd05rxqs8lc0M_J7aBtL-qk31g5xqgNCKQOg8YZ6FTLAvtbRWIYzCEZNT-OCRGwh18hIqvZHT1tI0lGxoa6cvU6tnl5mcslw_NuuYrdp6pmpIqqiSTinJeIcM4x30mjBRYk6acebAZt1ab4N1XHmNNmHprFewuOvOpyxvDClvGFJN361mI3zSxUCuFievRRI6UxGAxF1Szuez7nnxQqaAp_s0ibQjnE0G5PrfUq50M-ojzOCaV2U16Oli9a8WS-Joms2TuXnGieIiqcKmYA2v7ZFh665OZ5r8XZhP8Q1LCJ5xR8oCSJeXWmjgYCyLls6L14Bc-wR7eKgfVkNxUzWM-Y98WupmzmN9_PKocalzbByD1N-LDfv8VOWhfcQ3fVMw6KPCAVxlM",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create activity",
+			"request": {
+				"url": "http://api.dev.cs441.lan/api/activities",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjU1ZjYwMjZlZGVmZjIxODNhZjRlMmY5NDQyZGIwYjMwZjg0YzA1MmIxY2M0MTFmODY5ZDlmZTA5NzM2MjEzNDc4ZDc3YmY3YmM0YTY4NzIwIn0.eyJhdWQiOiIyIiwianRpIjoiNTVmNjAyNmVkZWZmMjE4M2FmNGUyZjk0NDJkYjBiMzBmODRjMDUyYjFjYzQxMWY4NjlkOWZlMDk3MzYyMTM0NzhkNzdiZjdiYzRhNjg3MjAiLCJpYXQiOjE0ODgyNjA5NjEsIm5iZiI6MTQ4ODI2MDk2MSwiZXhwIjoxNTE5Nzk2OTYxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.OnGRGvuSSBRu3gJrELU5gPTVblbkO_7c8AJ94Rv2QnA3VrK11WB9BvgxfsBJH45n9HV1bceQukZmmD78NzxM73jS5nKvPO3xkfy8hMczJSEkxLVv6-3iDByX0Me69z6QJ1KGhSAK1Ef9jqDU93zryRyzkXu6gQXb66-YX6ANFReant0XzzrV0wAMegvHvdOWH3AzsHavA4w7ByhWXI8ZeAE8GmMvf-wD6_4Vpmy3pIx_ics6pPyDvkdxXjCe1o2l7trDY0bX7AWZJc0KEqkX0jHTFjesVr2BUMd05rxqs8lc0M_J7aBtL-qk31g5xqgNCKQOg8YZ6FTLAvtbRWIYzCEZNT-OCRGwh18hIqvZHT1tI0lGxoa6cvU6tnl5mcslw_NuuYrdp6pmpIqqiSTinJeIcM4x30mjBRYk6acebAZt1ab4N1XHmNNmHprFewuOvOpyxvDClvGFJN361mI3zSxUCuFievRRI6UxGAxF1Szuez7nnxQqaAp_s0ibQjnE0G5PrfUq50M-ojzOCaV2U16Oli9a8WS-Joms2TuXnGieIiqcKmYA2v7ZFh665OZ5r8XZhP8Q1LCJ5xR8oCSJeXWmjgYCyLls6L14Bc-wR7eKgfVkNxUzWM-Y98WupmzmN9_PKocalzbByD1N-LDfv8VOWhfcQ3fVMw6KPCAVxlM",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Test activity cool",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "address",
+							"value": "2128, sand crest way san marcos ca",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "event_at",
+							"value": "2017-02-28 14:30:00",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "category_id",
+							"value": "1",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "community_id",
+							"value": "2",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update first activity",
+			"request": {
+				"url": "http://api.dev.cs441.lan/api/activities/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjU1ZjYwMjZlZGVmZjIxODNhZjRlMmY5NDQyZGIwYjMwZjg0YzA1MmIxY2M0MTFmODY5ZDlmZTA5NzM2MjEzNDc4ZDc3YmY3YmM0YTY4NzIwIn0.eyJhdWQiOiIyIiwianRpIjoiNTVmNjAyNmVkZWZmMjE4M2FmNGUyZjk0NDJkYjBiMzBmODRjMDUyYjFjYzQxMWY4NjlkOWZlMDk3MzYyMTM0NzhkNzdiZjdiYzRhNjg3MjAiLCJpYXQiOjE0ODgyNjA5NjEsIm5iZiI6MTQ4ODI2MDk2MSwiZXhwIjoxNTE5Nzk2OTYxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.OnGRGvuSSBRu3gJrELU5gPTVblbkO_7c8AJ94Rv2QnA3VrK11WB9BvgxfsBJH45n9HV1bceQukZmmD78NzxM73jS5nKvPO3xkfy8hMczJSEkxLVv6-3iDByX0Me69z6QJ1KGhSAK1Ef9jqDU93zryRyzkXu6gQXb66-YX6ANFReant0XzzrV0wAMegvHvdOWH3AzsHavA4w7ByhWXI8ZeAE8GmMvf-wD6_4Vpmy3pIx_ics6pPyDvkdxXjCe1o2l7trDY0bX7AWZJc0KEqkX0jHTFjesVr2BUMd05rxqs8lc0M_J7aBtL-qk31g5xqgNCKQOg8YZ6FTLAvtbRWIYzCEZNT-OCRGwh18hIqvZHT1tI0lGxoa6cvU6tnl5mcslw_NuuYrdp6pmpIqqiSTinJeIcM4x30mjBRYk6acebAZt1ab4N1XHmNNmHprFewuOvOpyxvDClvGFJN361mI3zSxUCuFievRRI6UxGAxF1Szuez7nnxQqaAp_s0ibQjnE0G5PrfUq50M-ojzOCaV2U16Oli9a8WS-Joms2TuXnGieIiqcKmYA2v7ZFh665OZ5r8XZhP8Q1LCJ5xR8oCSJeXWmjgYCyLls6L14Bc-wR7eKgfVkNxUzWM-Y98WupmzmN9_PKocalzbByD1N-LDfv8VOWhfcQ3fVMw6KPCAVxlM",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "address",
+							"value": "333 S. Twin Oaks Valley Rd, San Marcos, CA 92096",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "List activities nearby",
+			"request": {
+				"url": "http://api.dev.cs441.lan/api/activities?latitude=33.129122&longitude=-117.159769",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjU1ZjYwMjZlZGVmZjIxODNhZjRlMmY5NDQyZGIwYjMwZjg0YzA1MmIxY2M0MTFmODY5ZDlmZTA5NzM2MjEzNDc4ZDc3YmY3YmM0YTY4NzIwIn0.eyJhdWQiOiIyIiwianRpIjoiNTVmNjAyNmVkZWZmMjE4M2FmNGUyZjk0NDJkYjBiMzBmODRjMDUyYjFjYzQxMWY4NjlkOWZlMDk3MzYyMTM0NzhkNzdiZjdiYzRhNjg3MjAiLCJpYXQiOjE0ODgyNjA5NjEsIm5iZiI6MTQ4ODI2MDk2MSwiZXhwIjoxNTE5Nzk2OTYxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.OnGRGvuSSBRu3gJrELU5gPTVblbkO_7c8AJ94Rv2QnA3VrK11WB9BvgxfsBJH45n9HV1bceQukZmmD78NzxM73jS5nKvPO3xkfy8hMczJSEkxLVv6-3iDByX0Me69z6QJ1KGhSAK1Ef9jqDU93zryRyzkXu6gQXb66-YX6ANFReant0XzzrV0wAMegvHvdOWH3AzsHavA4w7ByhWXI8ZeAE8GmMvf-wD6_4Vpmy3pIx_ics6pPyDvkdxXjCe1o2l7trDY0bX7AWZJc0KEqkX0jHTFjesVr2BUMd05rxqs8lc0M_J7aBtL-qk31g5xqgNCKQOg8YZ6FTLAvtbRWIYzCEZNT-OCRGwh18hIqvZHT1tI0lGxoa6cvU6tnl5mcslw_NuuYrdp6pmpIqqiSTinJeIcM4x30mjBRYk6acebAZt1ab4N1XHmNNmHprFewuOvOpyxvDClvGFJN361mI3zSxUCuFievRRI6UxGAxF1Szuez7nnxQqaAp_s0ibQjnE0G5PrfUq50M-ojzOCaV2U16Oli9a8WS-Joms2TuXnGieIiqcKmYA2v7ZFh665OZ5r8XZhP8Q1LCJ5xR8oCSJeXWmjgYCyLls6L14Bc-wR7eKgfVkNxUzWM-Y98WupmzmN9_PKocalzbByD1N-LDfv8VOWhfcQ3fVMw6KPCAVxlM",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Show profile",
+			"request": {
+				"url": "http://api.dev.cs441.lan/api/users/profile",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjU1ZjYwMjZlZGVmZjIxODNhZjRlMmY5NDQyZGIwYjMwZjg0YzA1MmIxY2M0MTFmODY5ZDlmZTA5NzM2MjEzNDc4ZDc3YmY3YmM0YTY4NzIwIn0.eyJhdWQiOiIyIiwianRpIjoiNTVmNjAyNmVkZWZmMjE4M2FmNGUyZjk0NDJkYjBiMzBmODRjMDUyYjFjYzQxMWY4NjlkOWZlMDk3MzYyMTM0NzhkNzdiZjdiYzRhNjg3MjAiLCJpYXQiOjE0ODgyNjA5NjEsIm5iZiI6MTQ4ODI2MDk2MSwiZXhwIjoxNTE5Nzk2OTYxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.OnGRGvuSSBRu3gJrELU5gPTVblbkO_7c8AJ94Rv2QnA3VrK11WB9BvgxfsBJH45n9HV1bceQukZmmD78NzxM73jS5nKvPO3xkfy8hMczJSEkxLVv6-3iDByX0Me69z6QJ1KGhSAK1Ef9jqDU93zryRyzkXu6gQXb66-YX6ANFReant0XzzrV0wAMegvHvdOWH3AzsHavA4w7ByhWXI8ZeAE8GmMvf-wD6_4Vpmy3pIx_ics6pPyDvkdxXjCe1o2l7trDY0bX7AWZJc0KEqkX0jHTFjesVr2BUMd05rxqs8lc0M_J7aBtL-qk31g5xqgNCKQOg8YZ6FTLAvtbRWIYzCEZNT-OCRGwh18hIqvZHT1tI0lGxoa6cvU6tnl5mcslw_NuuYrdp6pmpIqqiSTinJeIcM4x30mjBRYk6acebAZt1ab4N1XHmNNmHprFewuOvOpyxvDClvGFJN361mI3zSxUCuFievRRI6UxGAxF1Szuez7nnxQqaAp_s0ibQjnE0G5PrfUq50M-ojzOCaV2U16Oli9a8WS-Joms2TuXnGieIiqcKmYA2v7ZFh665OZ5r8XZhP8Q1LCJ5xR8oCSJeXWmjgYCyLls6L14Bc-wR7eKgfVkNxUzWM-Y98WupmzmN9_PKocalzbByD1N-LDfv8VOWhfcQ3fVMw6KPCAVxlM",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
