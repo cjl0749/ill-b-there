@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\User;
 use App\Models\Nationality;
@@ -160,6 +161,26 @@ class UserController extends Controller
 
 		return $user;
     }
+
+    /**
+     * Returns past activities for user
+     *
+     * @param  \App\Models\User  $user
+     * @return user activities
+     */
+    public function history()
+    {
+
+        $userActivities = DB::table('activities')
+            ->select('*')
+            ->where([
+                ['event_at', '<', 'NOW'],
+                ['id', '=', Auth::id()],
+            ])->get();
+
+        return $userActivities;
+    }
+
 
     /**
      * Remove the specified resource from storage.
