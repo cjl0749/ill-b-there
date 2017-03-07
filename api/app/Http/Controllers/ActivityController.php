@@ -255,4 +255,26 @@ class ActivityController extends Controller
 
 		$activity->participants()->detach(Auth::id());
 	}
+
+	public function userFutureActivities()
+    {
+        $timeCheck = new \DateTime();
+        $userActivities = Activity::where([
+            ['event_at', '>', $timeCheck],
+            ['id', '=', Auth::id()],
+        ])->get();
+
+        return $userActivities;
+    }
+
+    public function userPastActivities()
+    {
+        $timeCheck = new \DateTime();
+        $userPastActivities = Activity::where([
+            ['event_at', '<', $timeCheck],
+            ['id', '=', Auth::id()],
+        ])->get();
+
+        return $userPastActivities;
+    }
 }
