@@ -165,16 +165,33 @@ class UserController extends Controller
     /**
      * Returns past activities for user
      *
-     * @param  \App\Models\User  $user
      * @return user activities
      */
     public function history()
     {
+        $timeCheck = new \DateTime();
+        $userPastActivities = DB::table('activities')
+            ->select('*')
+            ->where([
+                ['event_at', '<', $timeCheck],
+                ['id', '=', Auth::id()],
+            ])->get();
 
+        return $userPastActivities;
+    }
+
+    /**
+     * Returns current and future activities for user
+     *
+     * @return user's future activities
+     */
+    public function activities()
+    {
+        $timeCheck = new \DateTime();
         $userActivities = DB::table('activities')
             ->select('*')
             ->where([
-                ['event_at', '<', 'NOW'],
+                ['event_at', '>', $timeCheck],
                 ['id', '=', Auth::id()],
             ])->get();
 
