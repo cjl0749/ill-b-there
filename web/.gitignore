@@ -1,0 +1,7 @@
+# npm dependencies
+node_modules
+# compiled CSS (from Sass)
+css
+.sass-cache
+# Compiled JS
+js/main.js

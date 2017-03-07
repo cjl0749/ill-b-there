@@ -1,0 +1,21 @@
+/* Generic floating panels */
+
+.panel {
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  border-radius: 3px;
+  padding: 20px 40px;
+  background-color: #fff;
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Sign In Panel */
+
+.panel-sign-in {
+  width: 320px;
+  height: 300px;
+}

@@ -19,6 +19,5 @@ AppComponent.view = function () {
   ];
 };
 
-m.mount(document.body, AppComponent);
-
+window.AppComponent = AppComponent;
 }());
