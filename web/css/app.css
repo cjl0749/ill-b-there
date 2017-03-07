@@ -1,0 +1,114 @@
+/* General page */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #39d;
+}
+
+/* Global app header */
+
+.app-header {
+  padding: 16px 20px;
+  background-color: #fff;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+.app-title {
+  margin: 0;
+  font-weight: bold;
+  font-size: 24px;
+  color: #28d;
+  text-transform: none;
+}
+
+/* Section headings (to denote hierarchy) */
+
+h1, h2, h3 {
+  text-transform: uppercase;
+  color: #28d;
+}
+
+/* Input fields and buttons */
+
+/* Use consistent styling for all form elements */
+label,
+input,
+button {
+  margin: 4px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+input[type='text'],
+input[type='password'] {
+  border: solid 1px #bbb;
+  padding: 4px 8px;
+  font-size: 20px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+input[type='text']:focus,
+input[type='password']:focus {
+  outline-width: 0;
+  border-color: #f63;
+  background-color: #ffe;
+  box-shadow: 0 0 5px 1px #f96;
+}
+
+button {
+  border: solid 1px rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+  padding: 4px 8px;
+  /* Buttons are blue by default */
+  background-color: #47d;
+  color: #fff;
+  font-size: 18px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+button:focus {
+  outline-width: 0;
+  background-color: #58e;
+}
+/* Submit buttons are green */
+button[type='submit'] {
+  background-color: #5b2;
+}
+button[type='submit']:focus {
+  background-color: #6c3;
+}
+/* Add an 3D inset effect when the user presses the button */
+button:hover:active {
+  position: relative;
+  top: 1px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+/* Generic floating panels */
+
+.panel {
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  border-radius: 3px;
+  padding: 20px 40px;
+  background-color: #fff;
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Sign In Panel */
+
+.panel-sign-in {
+  width: 320px;
+  height: 300px;
+}
