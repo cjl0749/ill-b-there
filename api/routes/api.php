@@ -18,8 +18,6 @@ Route::group(['middleware' => ['auth:api']], function()
 	Route::group(['prefix' => '/users'], function()
 	{
 		Route::get('/profile', ['uses' => 'UserController@profile']);
-        Route::get('/profile/activities', ['uses' => 'UserController@activities']);
-        Route::get('/profile/activities/history', ['uses' => 'UserController@history']);
 	});
 	Route::resource('users', 'UserController', ['except' => ['create', 'store']]);
 
@@ -41,6 +39,9 @@ Route::group(['middleware' => ['auth:api']], function()
 
 	Route::group(['prefix' => '/activities'], function()
 	{
+        Route::get('/future', ['uses' => 'ActivityController@userFutureActivities']);
+        Route::get('/past', ['uses' => 'ActivityController@userPastActivities']);
+
 		Route::group(['prefix' => '/{activity}'], function()
 		{
 			Route::get('/join', ['uses' => 'ActivityController@join']);
