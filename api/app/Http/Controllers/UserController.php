@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
@@ -160,42 +161,6 @@ class UserController extends Controller
 		$user->save();
 
 		return $user;
-    }
-
-    /**
-     * Returns past activities for user
-     *
-     * @return user activities
-     */
-    public function history()
-    {
-        $timeCheck = new \DateTime();
-        $userPastActivities = DB::table('activities')
-            ->select('*')
-            ->where([
-                ['event_at', '<', $timeCheck],
-                ['id', '=', Auth::id()],
-            ])->get();
-
-        return $userPastActivities;
-    }
-
-    /**
-     * Returns current and future activities for user
-     *
-     * @return user's future activities
-     */
-    public function activities()
-    {
-        $timeCheck = new \DateTime();
-        $userActivities = DB::table('activities')
-            ->select('*')
-            ->where([
-                ['event_at', '>', $timeCheck],
-                ['id', '=', Auth::id()],
-            ])->get();
-
-        return $userActivities;
     }
 
 
