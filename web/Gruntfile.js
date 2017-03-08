@@ -1,5 +1,5 @@
 // Config file for Grunt, which enables automatic style/script compilation
-module.exports = function(grunt) {
+module.exports = function (grunt) {
   'use strict';
 
   grunt.initConfig({
@@ -33,11 +33,16 @@ module.exports = function(grunt) {
       }
     },
 
+    // Lint all JavaScript using ESLint
+    eslint: {
+      target: ['*.js', 'js/modules/*.js']
+    },
+
     // Concatenate separate JavaScript files into a single file
     concat: {
       scripts: {
         files: {
-          'js/main.js': 'js/*.js',
+          'js/main.js': 'js/modules/*.js',
         }
       }
     },
@@ -46,9 +51,10 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         files: [
-          'js/*.js',
+          'js/modules/*.js',
         ],
         tasks: [
+          'eslint',
           'concat'
         ]
       },
@@ -67,12 +73,14 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-postcss');
+  grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('build', [
     'sass',
     'postcss',
+    'eslint',
     'concat'
   ]);
 

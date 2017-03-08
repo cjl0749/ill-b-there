@@ -1,4 +1,4 @@
-(function() {
+(function () {
 'use strict';
 
 var AppHeaderComponent = {};
@@ -8,7 +8,7 @@ AppHeaderComponent.view = function () {
     m('header.app-header', [
       m('h1.app-title', 'I\'ll B There')
     ])
-  ]
+  ];
 };
 
 var AppComponent = {};
@@ -16,7 +16,7 @@ var AppComponent = {};
 AppComponent.view = function () {
   return [
     m(AppHeaderComponent),
-    m(SignInComponent)
+    m(window.SignInComponent)
   ];
 };
 
