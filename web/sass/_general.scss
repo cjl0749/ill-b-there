@@ -1,4 +1,4 @@
-/* General page and containers */
+// General page and containers
 
 body {
   margin: 0;
@@ -12,7 +12,7 @@ main {
   display: block;
 }
 
-/* Global app header */
+// Global app header
 
 .app-header {
   padding: 16px 20px;
@@ -27,7 +27,7 @@ main {
   text-transform: none;
 }
 
-/* Section headings (to denote hierarchy) */
+// Section headings (to denote hierarchy)
 
 h1, h2, h3 {
   text-transform: uppercase;
