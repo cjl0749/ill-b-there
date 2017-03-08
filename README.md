@@ -38,6 +38,32 @@ composer update              # Updates the Laravel packages
 php artisan migrate          # Updates the database structure
 ```
 
+### Building the front end
+
+To run the front end, you will need to install the build setup.
+
+First, install Node.js and Grunt (if you haven't already):
+
+```sh
+# For macOS
+brew install node
+npm install -g grunt-cli
+```
+
+Then, `cd` into the project's `web` directory (if you haven't already) and run:
+
+```sh
+npm install
+```
+
+Finally, to start the local front-end server, open a new terminal tab and run:
+
+```sh
+grunt serve
+```
+
+Grunt is the command-line tool used to build the front end. In order to properly view the front end, the Grunt server must be running in your terminal. This local server will build the project as you change files, and it will inform you of syntactic and stylistic errors in your code.
+
 ### Running the project
 
 There is two solutions to run the webservice:
