@@ -256,6 +256,11 @@ class ActivityController extends Controller
 		$activity->participants()->detach(Auth::id());
 	}
 
+    /**
+     * Gets a users future activites and returns them
+     * @return mixed
+     */
+
 	public function userFutureActivities()
     {
         $timeCheck = new \DateTime();
@@ -266,6 +271,11 @@ class ActivityController extends Controller
 
         return $userActivities;
     }
+
+    /**
+     * Gets a users past activities and returns them
+     * @return mixed
+     */
 
     public function userPastActivities()
     {
