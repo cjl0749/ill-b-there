@@ -3,6 +3,10 @@
 'use strict';
 
 module.exports = {
+  paths: {
+    // The directory the front end site is built to
+    public: 'www'
+  },
   files: {
     // Concatenate and conpress JavaScript
     javascripts: {

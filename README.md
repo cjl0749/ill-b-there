@@ -68,5 +68,5 @@ Brunch is the command-line tool used to build the front end. In order to properl
 
 There is two solutions to run the webservice:
 
- 1. You need a [virtualhost](https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-14-04-lts) (should be pretty much the same on OS X) pointing to the `web/public` directory of the project. Once it is set up you can access the webservice through the URL you set in your virtualhost.
+ 1. You need a [virtualhost](https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-14-04-lts) (should be pretty much the same on OS X) pointing to the `web/www` directory of the project. Once it is set up you can access the webservice through the URL you set in your virtualhost.
  2. Run the command `php artisan serve` and the project will be available on `http://localhost:8000`.

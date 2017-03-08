@@ -1,6 +1,6 @@
 # npm dependencies
 node_modules
 # compiled front end
-public
+www
 # sass compilation cache
 .sass-cache
