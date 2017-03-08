@@ -7,6 +7,7 @@ node_js:
   - "5"
   - "4"
 before_script:
+  - cd ./web
   - ./node_modules/brunch/bin/brunch build
 script:
   - npm run lint
