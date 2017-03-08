@@ -18,15 +18,6 @@ module.exports = {
   },
 
   /**
-   * Allowed JavaScript globals not already included in the above environments
-   */
-
-  globals: {
-    // Mithril
-    'm': true
-  },
-
-  /**
    * Enabled ESLint rules
    */
 
@@ -161,7 +152,7 @@ module.exports = {
      * Strict Mode
      */
 
-    'strict': ['error', 'function'],
+    'strict': ['error', 'safe'],
 
     /**
      * Variables

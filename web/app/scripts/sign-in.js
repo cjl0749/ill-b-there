@@ -1,5 +1,6 @@
-(function () {
 'use strict';
+
+var m = require('mithril');
 
 var SignInComponent = {};
 
@@ -21,5 +22,4 @@ SignInComponent.view = function () {
   ]);
 };
 
-window.SignInComponent = SignInComponent;
-}());
+module.exports = SignInComponent;

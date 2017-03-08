@@ -1,5 +1,7 @@
-(function () {
 'use strict';
+
+var m = require('mithril');
+var SignInComponent = require('./sign-in');
 
 var AppHeaderComponent = {};
 
@@ -16,9 +18,8 @@ var AppComponent = {};
 AppComponent.view = function () {
   return [
     m(AppHeaderComponent),
-    m(window.SignInComponent)
+    m(SignInComponent)
   ];
 };
 
-window.AppComponent = AppComponent;
-}());
+module.exports = AppComponent;
