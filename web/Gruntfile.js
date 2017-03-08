@@ -1,5 +1,6 @@
 // Config file for Grunt, which enables automatic style/script compilation
 module.exports = function(grunt) {
+  'use strict';
 
   grunt.initConfig({
 
