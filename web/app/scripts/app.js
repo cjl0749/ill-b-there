@@ -1,24 +1,18 @@
 'use strict';
 
 var m = require('mithril');
-var SignInComponent = require('./sign-in');
-
-var AppHeaderComponent = {};
-
-AppHeaderComponent.view = function () {
-  return [
-    m('header.app-header', [
-      m('h1.app-title', 'I\'ll B There')
-    ])
-  ];
-};
 
 var AppComponent = {};
 
-AppComponent.view = function () {
+AppComponent.view = function (vnode) {
   return [
-    m(AppHeaderComponent),
-    m(SignInComponent)
+    m('header.app-header', [
+      m('h1.app-title', 'I\'ll B There')
+    ]),
+    // AppComponent acts as a layout which accepts any arbitrary sub-component
+    // for content (this is to avoid duplication of static components, such as
+    // the header and footer, across several components); see main.js
+    vnode.children[0]
   ];
 };
 
