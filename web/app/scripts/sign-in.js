@@ -5,7 +5,7 @@ var m = require('mithril');
 var SignInComponent = {};
 
 SignInComponent.view = function () {
-  return m('form[action="?"].panel.panel-sign-in', [
+  return m('form[action="?"][method=POST].panel.panel-sign-in', [
     m('h2', 'Sign In'),
     m('div.row', [
       m('label', 'Email'),
