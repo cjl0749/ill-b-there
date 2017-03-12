@@ -34,20 +34,20 @@ button {
   border-radius: 2px;
   padding: 4px 8px;
   // Buttons are blue by default
-  background-color: #47d;
+  background-color: $blue;
   color: #fff;
   font-size: 18px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
   &:focus {
     outline-width: 0;
-    background-color: #58e;
+    background-color: lighten($blue, 7.5%);
   }
   // Submit buttons are green
   &[type='submit'] {
-    background-color: #5b2;
+    background-color: $green;
   }
   &[type='submit']:focus {
-    background-color: #6c3;
+    background-color: lighten($green, 5%);
   }
   // Add an 3D inset effect when the user presses the button
   &:hover:active {
