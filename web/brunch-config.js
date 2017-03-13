@@ -17,7 +17,7 @@ module.exports = {
     // Conpile Sass to CSS
     stylesheets: {
       joinTo: {
-        'css/main.css': ['app/styles/main.scss']
+        'styles/main.css': ['app/styles/main.scss']
       }
     }
   },
