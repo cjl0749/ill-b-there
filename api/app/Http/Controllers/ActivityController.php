@@ -13,7 +13,16 @@ use GoogleMaps;
 class ActivityController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @api {get} /activities List activities
+	 * @apiName index
+	 * @apiGroup Activities
+	 *
+     * @apiDescription Display a listing of the activities around the logged in user.
+	 * @apiExample {curl} Example usage:
+	 *		curl -i http://api.dev.cs441.lan/api/activities?latitude=33.1295574&longitude=-117.1599449
+	 *
+	 * @apiParam {Number} latitude	The current latitude of the user
+	 * @apiParam {Number} longitude	The current longitude of the user
      *
      * @return \Illuminate\Http\Response
      */
@@ -39,7 +48,11 @@ class ActivityController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * @api {get} /activities/create Activity creation form
+	 * @apiName create
+	 * @apiGroup Activities
+	 *
+     * @apiDescription Show the form for creating a new activity.
      *
      * @return \Illuminate\Http\Response
      */
@@ -56,7 +69,20 @@ class ActivityController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @api {post} /activities Store new activity
+	 * @apiName store
+	 * @apiGroup Activities
+	 *
+     * @apiDescription Store a newly created activity in storage.
+	 *
+	 * @apiParam {String}	title			The title of the activity
+	 * @apiParam {String}	[description]	The description of the activity
+	 * @apiParam {Number}	[community_id]	The ID of the community to link the activity to
+	 * @apiParam {Number}	category_id		The ID of the category to link the activity to
+	 * @apiParam {Number}	longitude		The longitude of the location of the event. Required without the address.
+	 * @apiParam {Number}	latitude		The latitude of the location of the event. Required without the address.
+	 * @apiParam {String}	address			The address of the location of the event. Required without the latitude and the longitude.
+	 * @apiParam {String}	event_at		The time of the event.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -125,7 +151,13 @@ class ActivityController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @api {get} /activities/:id Display an activity
+	 * @apiName show
+	 * @apiGroup Activities
+	 *
+     * @apiDescription Display the specified activity.
+	 *
+	 * @apiParam {Number}	id		The ID of the activity
      *
      * @param  \App\Models\Activity  $activity
      * @return \Illuminate\Http\Response
@@ -140,8 +172,14 @@ class ActivityController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * @api {get} /activities/:id/edit Activity update form
+	 * @apiName edit
+	 * @apiGroup Activities
+	 *
+     * @apiDescription Show the form for editing the specified activity.
      *
+	 * @apiParam {Number}	id		The ID of the activity
+	 *
      * @param  \App\Models\Activity  $activity
      * @return \Illuminate\Http\Response
      */
@@ -153,8 +191,21 @@ class ActivityController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @api {put} /activities/:id Update an activity
+	 * @apiName update
+	 * @apiGroup Activities
+	 *
+     * @apiDescription Update the specified activity in storage.
      *
+	 * @apiParam {Number}	id		The ID of the activity
+	 *
+	 * @apiParam {String}	[title]			The title of the activity
+	 * @apiParam {String}	[description]	The description of the activity
+	 * @apiParam {Number}	[longitude]		The longitude of the location of the event.
+	 * @apiParam {Number}	[latitude]		The latitude of the location of the event.
+	 * @apiParam {String}	[address]		The address of the location of the event.
+	 * @apiParam {String}	[event_at]		The time of the event.
+	 *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Activity  $activity
      * @return \Illuminate\Http\Response
@@ -211,15 +262,21 @@ class ActivityController extends Controller
 		if ($address !== null)
 			$activity->address = $address;
 		if ($request->has('event_at'))
-			$activity->title = $request->get('event_at');
+			$activity->event_at = $request->get('event_at');
 		$activity->save();
 
 		return $activity;
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @api {delete} /activities/:id Delete an activity
+	 * @apiName destroy
+	 * @apiGroup Activities
+	 *
+     * @apiDescription Remove the specified activity from storage.
      *
+	 * @apiParam {Number}	id		The ID of the activity
+	 *
      * @param  \App\Models\Activity  $activity
      * @return \Illuminate\Http\Response
      */
@@ -231,7 +288,13 @@ class ActivityController extends Controller
 	}
 
 	/**
-	 * Join the specified activity as a participant.
+	 * @api {get} /activities/:id/join Join an activity
+	 * @apiName join
+	 * @apiGroup Activities
+	 *
+     * @apiDescription Join the specified activity as a participant.
+	 *
+	 * @apiParam {Number}	id		The ID of the activity
 	 *
 	 * @param Activity $activity
      * @return \Illuminate\Http\Response
@@ -244,7 +307,13 @@ class ActivityController extends Controller
 	}
 
 	/**
-	 * Leave the specified activity as a participant.
+	 * @api {get} /activities/:id/leave Leave an activity
+	 * @apiName leave
+	 * @apiGroup Activities
+	 *
+     * @apiDescription Leave the specified activity as a participant.
+	 *
+	 * @apiParam {Number}	id		The ID of the activity
 	 *
 	 * @param Activity $activity
      * @return \Illuminate\Http\Response
