@@ -31,6 +31,7 @@ input[type='password'] {
 }
 
 button {
+  position: relative;
   border: solid 1px rgba(0, 0, 0, 0.25);
   border-radius: 2px;
   padding: 4px 8px;
@@ -40,8 +41,10 @@ button {
   font-size: 18px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
   &:focus {
+    top: -1px;
     outline-width: 0;
     background-color: lighten($blue, 7.5%);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
   }
   // Submit buttons are green
   &[type='submit'] {
@@ -52,7 +55,6 @@ button {
   }
   // Add an 3D inset effect when the user presses the button
   &:hover:active {
-    position: relative;
     top: 1px;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.25);
   }
