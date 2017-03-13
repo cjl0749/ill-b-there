@@ -1,6 +1,7 @@
 'use strict';
 
 var m = require('mithril');
+var LoadingComponent = require('./loading');
 
 var WhereComponent = {};
 
@@ -40,11 +41,12 @@ WhereComponent.view = function (vnode) {
   var state = vnode.state;
   var app = vnode.attrs.app;
   return app.initializedMap ? m('div.where', [
-    state.geolocating ? m('div.panel.geolocation-panel', [
-      m('h2', 'Finding you...'),
-      m('p', 'Querying your current location...')
-    ]) : null,
-    m('div.where-map', {oncreate: state.initializeMap})
+    state.geolocating ?
+      m('div.panel', [
+        m('h2', 'Locating you...'),
+        m(LoadingComponent)
+      ]) : null,
+      m('div.where-map', {oncreate: state.initializeMap})
   ]) : null;
 };
 
