@@ -2,5 +2,16 @@
 
 .where {
   // Stretch map to dynamically fit the height of its container
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
+}
+.where-map {
+  flex-grow: 1;
+}
+.geolocation-panel {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
 }
