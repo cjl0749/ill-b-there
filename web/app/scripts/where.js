@@ -29,9 +29,11 @@ WhereComponent.oninit = function (vnode) {
         center: {lat: 33.1434, lng: -117.1661},
         zoom: 10
       });
-      // Ask user for their current location and, if granted, center map at that
-      // location
-      state.goToUserLocation();
+      window.google.maps.event.addListenerOnce(state.map, 'tilesloaded', function () {
+        // Ask user for their current location and, if granted, center map at
+        // that location (but only after the map has loaded)
+        state.goToUserLocation();
+      });
     }
   };
   vnode.state = state;
