@@ -2,6 +2,9 @@
 
 .panel {
   display: block;
+  // Ensure that absolutely-positioned children are positioned relative to this
+  // panel container
+  position: relative;
   margin: 0 auto;
   margin-top: 50px;
   box-sizing: border-box;
