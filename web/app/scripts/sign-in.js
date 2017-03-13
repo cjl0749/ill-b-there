@@ -31,7 +31,7 @@ SignInComponent.view = function (vnode) {
       m('form', {method: 'POST', onsubmit: state.signIn}, [
         m('div.row', [
           m('label', 'Email'),
-          m('input[type=text][required][autofocus].user-email')
+          m('input[type=email][required][autofocus].user-email')
         ]),
         m('div.row', [
           m('label', 'Password'),
