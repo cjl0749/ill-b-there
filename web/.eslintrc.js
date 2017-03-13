@@ -17,6 +17,13 @@ module.exports = {
 
   },
 
+  globals: {
+
+    // Google JavaScript APIs (e.g. the Maps API)
+    'google': true
+
+  },
+
   /**
    * Enabled ESLint rules
    */

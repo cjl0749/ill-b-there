@@ -24,12 +24,12 @@ WhereComponent.oninit = function (vnode) {
       }
     },
     initializeMap: function (mapVnode) {
-      state.map = new window.google.maps.Map(mapVnode.dom, {
+      state.map = new google.maps.Map(mapVnode.dom, {
         // Center map at San Marcos, with the general North County area in view
         center: {lat: 33.1434, lng: -117.1661},
         zoom: 10
       });
-      window.google.maps.event.addListenerOnce(state.map, 'tilesloaded', function () {
+      google.maps.event.addListenerOnce(state.map, 'tilesloaded', function () {
         // Ask user for their current location and, if granted, center map at
         // that location (but only after the map has loaded)
         state.goToUserLocation();
