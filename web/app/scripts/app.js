@@ -7,6 +7,7 @@ var AppComponent = {};
 AppComponent.view = function (vnode) {
   return [
     m('header.app-header', [
+      m('img.app-logo', {src: 'images/logo.svg', alt: 'Logo'}),
       m('h1.app-title', 'I\'ll B There')
     ]),
     // AppComponent acts as a layout which accepts any arbitrary sub-component
