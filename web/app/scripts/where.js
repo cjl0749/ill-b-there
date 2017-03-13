@@ -20,6 +20,11 @@ WhereComponent.oninit = function (vnode) {
           });
           state.map.setZoom(16);
           m.redraw();
+        }, function () {
+          // If an error occurred while retrieving user's location, or if user
+          // denies access to their location, dismiss the geolocation panel
+          state.geolocating = false;
+          m.redraw();
         });
       }
     },
