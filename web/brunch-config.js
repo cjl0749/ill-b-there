@@ -21,6 +21,11 @@ module.exports = {
       }
     }
   },
+  modules: {
+    autoRequire: {
+      'scripts/main.js': ['scripts/main']
+    }
+  },
   plugins: {
     postcss: {
       processors: [
