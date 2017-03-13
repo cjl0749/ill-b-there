@@ -42,7 +42,7 @@ WhereComponent.oninit = function (vnode) {
 WhereComponent.view = function (vnode) {
   var state = vnode.state;
   var app = vnode.attrs.app;
-  return app.initializedMap ? m('div.where', [
+  return app.mapsApiReady ? m('div.where', [
     state.geolocating ?
       m('div.panel', [
         m('h2', 'Locating you...'),

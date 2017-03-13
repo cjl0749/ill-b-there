@@ -21,8 +21,8 @@ m.route(document.querySelector('main'), '/sign-in', {
   }
 });
 
-// Run callback when the Google Maps API initialized
-window.initializeMap = function () {
-  app.initializedMap = true;
+// Run callback when the Google Maps API is loaded and ready
+window.mapsApiReady = function () {
+  app.mapsApiReady = true;
   m.redraw();
 };
