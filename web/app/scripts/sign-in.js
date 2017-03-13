@@ -10,6 +10,10 @@ SignInComponent.oninit = function (vnode) {
     signIn: function (submitEvent) {
       // Simulate the user signing in
       vnode.attrs.app.authenticating = true;
+      setTimeout(function () {
+        vnode.attrs.app.authenticating = false;
+        window.location.href = '#!/where';
+      }, 500);
       // Since authentication will be performed asynchronously within
       // JavaScript, ensure that the browser does not submit the form
       // synchronously
