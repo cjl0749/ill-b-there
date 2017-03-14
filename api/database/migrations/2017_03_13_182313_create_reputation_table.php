@@ -21,10 +21,7 @@ class CreateReputationTable extends Migration
             $table->integer('ratee_id');
             $table->double('rating');
         });
-
-        Schema::table('reputation', function (Blueprint $table) {
-            $table->foreign('activity_id')->references('id')->on('activities')->onDelete('set null');
-        });
+        
     }
 
     /**
