@@ -1,0 +1,13 @@
+# Travis CI Configuration
+
+language: node_js
+node_js:
+  - "7"
+  - "6"
+  - "5"
+before_script:
+  - cd ./web
+  - npm install
+  - ./node_modules/brunch/bin/brunch build
+script:
+  - npm run lint

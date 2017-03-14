@@ -1,0 +1,57 @@
+// General page and containers
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: $sans-serif;
+  background-color: $blue;
+}
+
+// Older browsers that don't recognize <main> will treat it as an inline element
+main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  text-align: center;
+}
+
+// Global app header
+
+$header-padding-x: 10px;
+.app-header {
+  position: relative;
+  z-index: 1000;
+  padding: 12px $header-padding-x;
+  background-color: #fff;
+  text-align: left;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+.app-logo {
+  $icon-size: 50px;
+  width: $icon-size;
+  height: $icon-size;
+  margin-right: $header-padding-x;
+  vertical-align: middle;
+}
+.app-title {
+  display: inline-block;
+  margin: 0;
+  font-weight: bold;
+  font-size: 24px;
+  color: $blue;
+  text-transform: none;
+  vertical-align: middle;
+}
+
+// Section headings (to denote hierarchy)
+
+h1, h2, h3 {
+  text-transform: uppercase;
+  color: $blue;
+}
