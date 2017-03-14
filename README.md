@@ -44,3 +44,13 @@ There is two solutions to run the webservice:
 
  1. You need a [virtualhost](https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-14-04-lts) (should be pretty much the same on OS X) pointing to the `public` directory of the Laravel project. Once it is set up you can access the webservice through the URL you set in your virtualhost.
  2. Run the command `php artisan serve` and the project will be available on `http://localhost:8000`.
+
+ ### Generating the documentation
+
+ We use [apiDoc](http://apidocjs.com/) to generate the documentation. Run the following command to build the files:
+
+ ```sh
+ apidoc -i app/ -o public/docs/
+ ```
+
+ The documentation will be generated and available at http://path.to.illbthere.api/docs
