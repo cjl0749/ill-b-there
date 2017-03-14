@@ -1,0 +1,21 @@
+// Loading indicator
+
+// Define the a spinning/throbbing animation for the indicator
+@keyframes loading {
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  display: block;
+  opacity: 0.25;
+  margin: 0 auto;
+  $icon-size: 100px;
+  width: $icon-size;
+  height: $icon-size;
+  animation: loading 1000ms linear infinite;
+}

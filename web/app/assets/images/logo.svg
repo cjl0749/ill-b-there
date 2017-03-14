@@ -1,0 +1,31 @@
+<svg viewBox="0 0 320 320" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <defs>
+    <rect id="logo-step-square" x="-6" y="-6" width="12" height="12" fill="#5b2" />
+    <circle id="logo-step-circle" cx="0" cy="0" r="6" fill="#5b2" />
+    <circle id="logo-person" r="20" fill="#39d" />
+  </defs>
+
+  <!-- person on left -->
+  <use xlink:href="#logo-step-square" x="94" y="230" />
+  <use xlink:href="#logo-step-square" x="116" y="230" />
+  <use xlink:href="#logo-person" x="58" y="230" />
+
+  <!-- person on right -->
+  <use xlink:href="#logo-step-square" x="138" y="230" />
+  <use xlink:href="#logo-step-square" x="182" y="230" />
+  <use xlink:href="#logo-step-square" x="204" y="230" />
+  <use xlink:href="#logo-step-square" x="226" y="230" />
+  <use xlink:href="#logo-person" x="262" y="230" />
+
+  <!-- person in center -->
+  <use xlink:href="#logo-step-square" x="160" y="252" />
+  <use xlink:href="#logo-person" x="160" y="288" />
+
+  <!-- location pin -->
+  <use xlink:href="#logo-step-circle" x="160" y="230" />
+  <g id="logo-pin">
+    <path d="M 160,230 Q 240,140 240,90 A 80,80 0,0,0 80,90 Q 80,140 160,230 Z" fill="#c33" />
+    <circle cx="160" cy="90" r="40" fill="#fff" />
+  </g>
+</svg>

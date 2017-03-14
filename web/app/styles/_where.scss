@@ -1,0 +1,18 @@
+// "Where" page with map
+
+.where {
+  // Stretch map to dynamically fit the height of its container
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+  .panel {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+.where-map {
+  flex-grow: 1;
+}

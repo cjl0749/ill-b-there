@@ -38,9 +38,35 @@ composer update              # Updates the Laravel packages
 php artisan migrate          # Updates the database structure
 ```
 
+### Building the front end
+
+To run the front end, you will need to install the build setup.
+
+First, install Node.js and Brunch (if you haven't already):
+
+```sh
+# For macOS
+brew install node
+npm install -g brunch
+```
+
+Then, `cd` into the project's `web` directory (if you haven't already) and run:
+
+```sh
+npm install
+```
+
+Finally, to start the local front-end server, open a new terminal tab and run:
+
+```sh
+brunch watch
+```
+
+Brunch is the command-line tool used to build the front end. In order to properly view the front end, the Brunch server must be running in your terminal. This local server will build the project as you change files, and it will inform you of syntactic and stylistic errors in your code.
+
 ### Running the project
 
 There is two solutions to run the webservice:
 
- 1. You need a [virtualhost](https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-14-04-lts) (should be pretty much the same on OS X) pointing to the `public` directory of the Laravel project. Once it is set up you can access the webservice through the URL you set in your virtualhost.
+ 1. You need a [virtualhost](https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-14-04-lts) (should be pretty much the same on OS X) pointing to the `web/www` directory of the project. Once it is set up you can access the webservice through the URL you set in your virtualhost.
  2. Run the command `php artisan serve` and the project will be available on `http://localhost:8000`.
