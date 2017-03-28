@@ -17,7 +17,6 @@ SignInComponent.oninit = function (vnode) {
       // JavaScript, ensure that the browser does not submit the form
       // synchronously
       submitEvent.preventDefault();
-      // Simulate the user signing in
       vnode.attrs.app.authenticating = true;
       Users.signIn({
         email: submitEvent.target.elements.email.value,
