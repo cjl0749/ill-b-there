@@ -1,8 +1,15 @@
 'use strict';
 
 var m = require('mithril');
+var Api = require('./api');
 
 var AppComponent = {};
+
+AppComponent.oninit = function () {
+  if (!Api.isAuthenticated() && m.route.get() !== 'sign-in') {
+    m.route.set('/sign-in');
+  }
+};
 
 AppComponent.view = function (vnode) {
   return [

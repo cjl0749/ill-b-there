@@ -1,25 +1,35 @@
 'use strict';
 
 var m = require('mithril');
+var Api = require('./api');
+var Users = require('./users');
 var LoadingComponent = require('./loading');
 
 var SignInComponent = {};
 
 SignInComponent.oninit = function (vnode) {
-  vnode.state = {
+  var state = {
+    redirectToWhere: function () {
+      m.route.set('/where');
+    },
     signIn: function (submitEvent) {
-      // Simulate the user signing in
-      vnode.attrs.app.authenticating = true;
-      setTimeout(function () {
-        vnode.attrs.app.authenticating = false;
-        window.location.href = '#!/where';
-      }, 500);
       // Since authentication will be performed asynchronously within
       // JavaScript, ensure that the browser does not submit the form
       // synchronously
       submitEvent.preventDefault();
+      // Simulate the user signing in
+      vnode.attrs.app.authenticating = true;
+      Users.signIn({
+        email: submitEvent.target.elements.email.value,
+        password: submitEvent.target.elements.password.value,
+        success: vnode.state.redirectToWhere
+      });
     }
   };
+  if (Api.isAuthenticated()) {
+    state.redirectToWhere();
+  }
+  vnode.state = state;
 };
 
 SignInComponent.view = function (vnode) {
@@ -31,11 +41,11 @@ SignInComponent.view = function (vnode) {
       m('form', {method: 'POST', onsubmit: state.signIn}, [
         m('div.row', [
           m('label', 'Email'),
-          m('input[type=email][required][autofocus].user-email')
+          m('input[type=email][name=email][required][autofocus].user-email')
         ]),
         m('div.row', [
           m('label', 'Password'),
-          m('input[type=password][required].user-password')
+          m('input[type=password][name=password][required].user-password')
         ]),
         m('div.row', [
           m('button[type=submit].sign-in-submit', 'Sign In'),
