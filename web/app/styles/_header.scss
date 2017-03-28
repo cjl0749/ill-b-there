@@ -1,0 +1,40 @@
+// Global app header
+
+$header-padding-x: 10px;
+.app-header {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1000;
+  padding: 12px $header-padding-x;
+  background-color: #fff;
+  text-align: left;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+.app-logo {
+  $icon-size: 50px;
+  width: $icon-size;
+  height: $icon-size;
+  margin-right: $header-padding-x;
+  vertical-align: middle;
+}
+.app-title {
+  display: inline-block;
+  margin: 0;
+  font-weight: bold;
+  font-size: 24px;
+  color: $blue;
+  text-transform: none;
+  vertical-align: middle;
+}
+.app-nav {
+  flex-grow: 1;
+  text-align: right;
+  li {
+    display: inline-block;
+    list-style-type: none;
+  }
+  a {
+    padding: 10px 20px;
+  }
+}
