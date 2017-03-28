@@ -21,10 +21,17 @@ main {
   text-align: center;
 }
 
+a {
+  color: $blue;
+  text-decoration: none;
+}
+
 // Global app header
 
 $header-padding-x: 10px;
 .app-header {
+  display: flex;
+  align-items: center;
   position: relative;
   z-index: 1000;
   padding: 12px $header-padding-x;
@@ -47,6 +54,17 @@ $header-padding-x: 10px;
   color: $blue;
   text-transform: none;
   vertical-align: middle;
+}
+.app-nav {
+  flex-grow: 1;
+  text-align: right;
+  li {
+    display: inline-block;
+    list-style-type: none;
+  }
+  a {
+    padding: 10px 20px;
+  }
 }
 
 // Section headings (to denote hierarchy)

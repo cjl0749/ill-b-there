@@ -25,6 +25,12 @@ Api.authenticate = function (accessToken) {
   localStorage.setItem('accessToken', Api.accessToken);
 };
 
+// De-authenticate authenticated user by clearing access tokens
+Api.clearAuthentication = function () {
+  Api.accessToken = null;
+  localStorage.removeItem('accessToken');
+};
+
 // Make any type of HTTP request
 Api.request = function (method, args) {
   m.request({
