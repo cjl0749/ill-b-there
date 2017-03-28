@@ -20,7 +20,10 @@ Users.signIn = function (args) {
     },
     onsuccess: function (data) {
       Api.authenticate(data.access_token);
-      args.success();
+      args.onsuccess();
+    },
+    onerror: function (error) {
+      args.onerror(error);
     }
   });
 };

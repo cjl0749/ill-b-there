@@ -17,11 +17,17 @@ SignInComponent.oninit = function (vnode) {
       // JavaScript, ensure that the browser does not submit the form
       // synchronously
       submitEvent.preventDefault();
-      vnode.attrs.app.authenticating = true;
+      state.invalid = false;
+      state.authenticating = true;
       Users.signIn({
         email: submitEvent.target.elements.email.value,
         password: submitEvent.target.elements.password.value,
-        success: vnode.state.redirectToWhere
+        onsuccess: state.redirectToWhere,
+        onerror: function () {
+          state.authenticating = false;
+          state.invalid = true;
+          m.redraw();
+        }
       });
     }
   };
@@ -33,9 +39,13 @@ SignInComponent.oninit = function (vnode) {
 
 SignInComponent.view = function (vnode) {
   var state = vnode.state;
+  var app = vnode.attrs.app;
   return m('div.panel.panel-sign-in', [
-    m('h2', vnode.attrs.app.authenticating ? 'Signing In...' : 'Sign In'),
-    vnode.attrs.app.authenticating ?
+    state.invalid ? m('div.row', [
+      m('p.error.sign-in-error', 'Incorrect email or password')
+    ]) : null,
+    m('h2', app.authenticating ? 'Signing In...' : 'Sign In'),
+    app.authenticating ?
       m(LoadingComponent) :
       m('form', {method: 'POST', onsubmit: state.signIn}, [
         m('div.row', [
