@@ -27,6 +27,7 @@ SignInComponent.oninit = function (vnode) {
           state.authenticating = false;
           state.invalid = true;
           m.redraw();
+          submitEvent.target.elements.email.focus();
         }
       });
     }
