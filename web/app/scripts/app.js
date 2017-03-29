@@ -26,7 +26,8 @@ AppComponent.view = function (vnode) {
       m('img.app-logo', {src: 'images/logo.svg', alt: 'Logo'}),
       m('h1.app-title', 'I\'ll B There'),
       m('nav.app-nav', m('ul', [
-        m('li', m('a[href=#]', {onclick: state.signOut}, 'Sign Out'))
+          Api.isAuthenticated() ?
+          m('li', m('a[href=#]', {onclick: state.signOut}, 'Sign Out')) : null
       ]))
     ]),
     // AppComponent acts as a layout which accepts any arbitrary sub-component
