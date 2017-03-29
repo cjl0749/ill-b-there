@@ -40,13 +40,12 @@ SignInComponent.oninit = function (vnode) {
 
 SignInComponent.view = function (vnode) {
   var state = vnode.state;
-  var app = vnode.attrs.app;
   return m('div.panel.panel-sign-in', [
     state.invalid ? m('div.row', [
       m('p.error.sign-in-error', 'Incorrect email or password')
     ]) : null,
-    m('h2', app.authenticating ? 'Signing In...' : 'Sign In'),
-    app.authenticating ?
+    m('h2', state.authenticating ? 'Signing In...' : 'Sign In'),
+    state.authenticating ?
       m(LoadingComponent) :
       m('form', {method: 'POST', onsubmit: state.signIn}, [
         m('div.row', [
