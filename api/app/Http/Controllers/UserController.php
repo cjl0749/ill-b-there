@@ -125,7 +125,14 @@ class UserController extends Controller
 	{
 		$user = Auth::user();
 
-		$user->load(['communities', 'applications', 'activities', 'friends']);
+		$user->load([
+			'communities',
+			'applications',
+			'activities',
+			'friends',
+			'friendRequests',
+			'receivedFriendRequests',
+		]);
 
 		return $user;
 	}

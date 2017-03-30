@@ -18,6 +18,7 @@ class AuthServiceProvider extends ServiceProvider
 		'App\Models\Community' => 'App\Policies\CommunityPolicy',
 		'App\Models\User' => 'App\Policies\UserPolicy',
 		'App\Models\Activity' => 'App\Policies\ActivityPolicy',
+		'App\Models\FriendRequest' => 'App\Policies\FriendRequestPolicy',
     ];
 
     /**
