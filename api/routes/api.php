@@ -46,7 +46,7 @@ Route::group(['middleware' => ['auth:api']], function()
 		{
 			Route::get('/join', ['uses' => 'ActivityController@join']);
 			Route::get('/leave', ['uses' => 'ActivityController@leave']);
-            Route::get('/feedback', ['uses' => 'ActivityController@giveFeedback']);
+            Route::post('/feedback', ['uses' => 'ActivityController@giveFeedback']);
 		});
 	});
 	Route::resource('activities', 'ActivityController');
