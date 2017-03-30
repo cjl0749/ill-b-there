@@ -49,12 +49,19 @@ WhatComponent.view = function (vnode) {
     m('h2', 'What would you like to do?'),
     state.categories ?
       m('div.what-categories', state.categories.map(function (category) {
+        var categorySlug = state.getCategorySlug(category);
         return m('div.what-category', {
-          class: state.getCategorySlug(category),
-          onclick: function (clickEvent) {
-            state.setCategory(clickEvent, category);
-          }
-        }, category.name);
+          class: 'what-category-' + categorySlug
+        }, [
+          m('div.what-category-bubble', m('img.what-category-icon', {
+            src: 'images/categories/' + categorySlug + '.svg',
+            alt: category.name,
+            onclick: function (clickEvent) {
+              state.setCategory(clickEvent, category);
+            }
+          })),
+          m('span.what-category-name', category.name)
+        ]);
       })) :
     state.errorLoading ?
       m('p.error', 'Sorry, categories cannot be loaded at this time.') :
