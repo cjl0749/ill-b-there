@@ -48,9 +48,9 @@ $category-colors: (
     .what-category-#{$category-name} & {
       border-color: darken($category-color, 10%);
       background-color: $category-color;
+      // Highlight icon on hover by lightening it
       &:hover {
-        border-color: $category-color;
-        background-color: lighten($category-color, 5%);
+        opacity: 0.75;
       }
     }
   }
