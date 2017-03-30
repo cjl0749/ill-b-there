@@ -27,7 +27,6 @@ SignInComponent.oninit = function (vnode) {
           state.authenticating = false;
           state.invalid = true;
           m.redraw();
-          submitEvent.target.elements.email.focus();
         }
       });
     }
@@ -50,7 +49,11 @@ SignInComponent.view = function (vnode) {
       m('form', {method: 'POST', onsubmit: state.signIn}, [
         m('div.row', [
           m('label', 'Email'),
-          m('input[type=email][name=email][required][autofocus].user-email')
+          m('input[type=email][name=email][required].user-email', {
+            oncreate: function (inputVnode) {
+              inputVnode.dom.focus();
+            }
+          })
         ]),
         m('div.row', [
           m('label', 'Password'),
