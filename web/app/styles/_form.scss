@@ -3,6 +3,7 @@
 // Use consistent styling for all form elements
 label,
 input,
+textarea,
 button {
   margin: 4px;
   font-family: $sans-serif;
@@ -17,7 +18,8 @@ label {
 
 input[type='text'],
 input[type='email'],
-input[type='password'] {
+input[type='password'],
+textarea {
   border: solid 1px #bbb;
   padding: 4px 8px;
   font-size: 20px;

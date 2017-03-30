@@ -53,7 +53,13 @@ WhereComponent.view = function (vnode) {
         m('h2', 'Locating you...'),
         m(LoadingComponent)
       ]) : null,
-      m('div.where-map', {oncreate: state.initializeMap})
+    m('div.where-map', {oncreate: state.initializeMap}),
+    m('div.screen-controls.where-controls', [
+      m('label[for=where-description]', 'Description'),
+      m('textarea.where-description#where-description', {
+        placeholder: 'Enter any details here...'
+      })
+    ])
   ]) : null;
 };
 
