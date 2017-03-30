@@ -21,7 +21,7 @@ class CreateReputationTable extends Migration
             $table->integer('ratee_id');
             $table->double('rating');
         });
-        
+
     }
 
     /**

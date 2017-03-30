@@ -287,4 +287,22 @@ class ActivityController extends Controller
 
         return $userPastActivities;
     }
+
+
+    /**
+     * Adds reputation score for a specific activity
+     * @param Request $request
+     */
+    public function giveFeedback(Request $request)
+    {
+        //$this->authorize('feedback', $request->get('activity_id'));
+        $ratee_id = $request->get('ratee_id');
+        $rating = $request->get('rating');
+        $activity_id = $request->get('activity_id');
+
+        $id = DB::table('reputation')->insertGetId([
+            'activity_id' => $activity_id, 'rator_id' => Auth::id(), 'ratee_id' => $ratee_id, 'rating' => $rating
+        ]);
+
+    }
 }
