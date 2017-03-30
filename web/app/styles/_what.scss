@@ -20,11 +20,10 @@ $category-colors: (
 }
 
 .what-categories {
-  // Lay out category bubbles as a grid
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
+  text-align: center;
+}
+.what-category {
+  display: inline-block;
 }
 
 .what-category-bubble {
