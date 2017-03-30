@@ -19,7 +19,7 @@ class ActivityController extends Controller
 	 *
      * @apiDescription Display a listing of the activities around the logged in user.
 	 * @apiExample {curl} Example usage:
-	 *		curl -i http://api.dev.cs441.lan/api/activities?latitude=33.1295574&longitude=-117.1599449
+	 *		curl -i https://api.illbthere.localhost/api/activities?latitude=33.1295574&longitude=-117.1599449
 	 *
 	 * @apiParam {Number} latitude	The current latitude of the user
 	 * @apiParam {Number} longitude	The current longitude of the user

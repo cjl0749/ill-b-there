@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"description": "I'll-B-There API documentation",
 	"title": "I'll-B-There API",
-	"url" : "https://api.dev.illbthere.lan/api",
+	"url" : "https://api.illbthere.localhost/api",
 
 	"template": {
 		"withCompare": false,

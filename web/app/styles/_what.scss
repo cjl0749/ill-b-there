@@ -1,0 +1,33 @@
+.panel-what {
+  max-width: 500px;
+  h2 {
+    text-align: center;
+  }
+}
+
+.what-categories {
+  // Lay out category bubbles as a grid
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.what-category {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  $size: 100px;
+  width: $size;
+  height: $size;
+  margin: 10px;
+  border: solid 2px darken($green, 5%);
+  border-radius: 50%;
+  background-color: $green;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  &:hover {
+    background-color: lighten($green, 10%);
+  }
+}

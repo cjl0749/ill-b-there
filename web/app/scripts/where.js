@@ -30,9 +30,9 @@ WhereComponent.oninit = function (vnode) {
     },
     initializeMap: function (mapVnode) {
       state.map = new google.maps.Map(mapVnode.dom, {
-        // Center map at San Marcos, with the general North County area in view
+        // Center map at area in San Marcos
         center: {lat: 33.1434, lng: -117.1661},
-        zoom: 10
+        zoom: 14
       });
       google.maps.event.addListenerOnce(state.map, 'tilesloaded', function () {
         // Ask user for their current location and, if granted, center map at
@@ -53,7 +53,13 @@ WhereComponent.view = function (vnode) {
         m('h2', 'Locating you...'),
         m(LoadingComponent)
       ]) : null,
-      m('div.where-map', {oncreate: state.initializeMap})
+    m('div.where-map', {oncreate: state.initializeMap}),
+    m('div.screen-controls.where-controls', [
+      m('label[for=where-description]', 'Description'),
+      m('textarea.where-description#where-description', {
+        placeholder: 'Enter any details here...'
+      })
+    ])
   ]) : null;
 };
 
