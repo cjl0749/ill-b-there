@@ -53,12 +53,13 @@ WhatComponent.view = function (vnode) {
         return m('div.what-category', {
           class: 'what-category-' + categorySlug
         }, [
-          m('div.what-category-bubble', m('img.what-category-icon', {
-            src: 'images/categories/' + categorySlug + '.svg',
-            alt: category.name,
+          m('div.what-category-bubble', {
             onclick: function (clickEvent) {
               state.setCategory(clickEvent, category);
             }
+          }, m('img.what-category-icon', {
+            src: 'images/categories/' + categorySlug + '.svg',
+            alt: category.name
           })),
           m('span.what-category-name', category.name)
         ]);
