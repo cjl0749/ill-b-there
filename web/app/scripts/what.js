@@ -46,7 +46,7 @@ WhatComponent.oninit = function (vnode) {
 WhatComponent.view = function (vnode) {
   var state = vnode.state;
   return m('div.panel.panel-what', [
-    m('h2', 'What would you like to do?'),
+    m('h2', 'What are you interested in?'),
     state.categories ?
       m('div.what-categories', state.categories.map(function (category) {
         var categorySlug = state.getCategorySlug(category);
