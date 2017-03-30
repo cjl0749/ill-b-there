@@ -11,11 +11,13 @@ $header-padding-x: 10px;
   background-color: #fff;
   text-align: left;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
 }
 .app-logo {
   $icon-size: 50px;
   width: $icon-size;
   height: $icon-size;
+  flex-shrink: 0;
   margin-right: $header-padding-x;
   vertical-align: middle;
 }
@@ -31,6 +33,10 @@ $header-padding-x: 10px;
 .app-nav {
   flex-grow: 1;
   text-align: right;
+  ul {
+    margin-left: 0;
+    padding-left: 0;
+  }
   li {
     display: inline-block;
     list-style-type: none;
