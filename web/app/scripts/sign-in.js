@@ -9,8 +9,8 @@ var SignInComponent = {};
 
 SignInComponent.oninit = function (vnode) {
   var state = {
-    redirectToWhere: function () {
-      m.route.set('/where');
+    redirectToNextScreen: function () {
+      m.route.set('/what');
     },
     signIn: function (submitEvent) {
       // Since authentication will be performed asynchronously within
@@ -22,7 +22,7 @@ SignInComponent.oninit = function (vnode) {
       Users.signIn({
         email: submitEvent.target.elements.email.value,
         password: submitEvent.target.elements.password.value,
-        onsuccess: state.redirectToWhere,
+        onsuccess: state.redirectToNextScreen,
         onerror: function () {
           state.authenticating = false;
           state.invalid = true;
@@ -33,7 +33,7 @@ SignInComponent.oninit = function (vnode) {
     }
   };
   if (Api.isAuthenticated()) {
-    state.redirectToWhere();
+    state.redirectToNextScreen();
   }
   vnode.state = state;
 };
