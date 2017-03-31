@@ -3,6 +3,11 @@
 var m = require('mithril');
 var Api = require('./api');
 
+// Object for storing application state shared across all routes
+var app = {
+  activity: {}
+};
+
 var AppComponent = {};
 
 AppComponent.oninit = function (vnode) {
@@ -33,8 +38,15 @@ AppComponent.view = function (vnode) {
     // AppComponent acts as a layout which accepts any arbitrary sub-component
     // for content (this is to avoid duplication of static components, such as
     // the header and footer, across several components); see main.js
-    m(vnode.attrs.ContentComponent, {app: vnode.attrs.app})
+    m(vnode.attrs.ContentComponent, {app: app})
   ];
+};
+
+
+// Run callback when the Google Maps API is loaded and ready
+window.mapsApiReady = function () {
+  app.mapsApiReady = true;
+  m.redraw();
 };
 
 module.exports = AppComponent;
