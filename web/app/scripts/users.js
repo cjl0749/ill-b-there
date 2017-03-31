@@ -19,7 +19,7 @@ Users.signIn = function (args) {
       password: args.password
     },
     onsuccess: function (data) {
-      Api.authenticate(data.access_token);
+      Api.authenticate(args.email, data.access_token);
       args.onsuccess();
     },
     onerror: function (error) {

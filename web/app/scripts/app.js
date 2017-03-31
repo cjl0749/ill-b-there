@@ -25,10 +25,10 @@ AppComponent.view = function (vnode) {
     m('header.app-header', [
       m('img.app-logo', {src: 'images/logo.svg', alt: 'Logo'}),
       m('h1.app-title', 'I\'ll B There'),
-      m('nav.app-nav', m('ul', [
-          Api.isAuthenticated() ?
-          m('li', m('a[href=#]', {onclick: state.signOut}, 'Sign Out')) : null
-      ]))
+      Api.isAuthenticated() ? m('div.user-info', [
+        m('span.user-email', Api.userEmail),
+        m('a[href=#]', {onclick: state.signOut}, 'Sign Out')
+      ]) : null
     ]),
     // AppComponent acts as a layout which accepts any arbitrary sub-component
     // for content (this is to avoid duplication of static components, such as

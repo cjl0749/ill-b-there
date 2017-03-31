@@ -29,19 +29,16 @@ $header-padding-x: 10px;
   color: $blue;
   text-transform: none;
   vertical-align: middle;
+  // Hide app title for smaller screens to conserve space in the header
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
 }
-.app-nav {
+.user-info {
   flex-grow: 1;
+  padding-right: 20px;
   text-align: right;
-  ul {
-    margin-left: 0;
-    padding-left: 0;
-  }
-  li {
-    display: inline-block;
-    list-style-type: none;
-  }
-  a {
-    padding: 10px 20px;
+  .user-email {
+    display: block;
   }
 }
