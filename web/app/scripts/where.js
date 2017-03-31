@@ -6,7 +6,23 @@ var LoadingComponent = require('./loading');
 var WhereComponent = {};
 
 WhereComponent.oninit = function (vnode) {
+  var app = vnode.attrs.app;
   var state = {
+    // Set the location of the in-progress activity to the location residing at
+    // the marker's current position
+    updateActivityLocation: function () {
+      var markerPosition = state.marker.getPosition();
+      state.geocoder.geocode({
+        location: markerPosition
+      }, function (results, geocodeStatus) {
+        if (geocodeStatus === google.maps.GeocoderStatus.OK) {
+          app.activity.latitude = markerPosition.lat();
+          app.activity.longitude = markerPosition.lng();
+          app.activity.address = results[0].formatted_address;
+          m.redraw();
+        }
+      });
+    },
     goToUserLocation: function () {
       if (navigator.geolocation) {
         // Indicate that the browser is attempting to query user's location
@@ -14,11 +30,14 @@ WhereComponent.oninit = function (vnode) {
         m.redraw();
         navigator.geolocation.getCurrentPosition(function (position) {
           state.geolocating = false;
-          state.map.setCenter({
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          });
+          var newPosition = new google.maps.LatLng(
+            position.coords.latitude,
+            position.coords.longitude
+          );
+          state.map.setCenter(newPosition);
+          state.marker.setPosition(newPosition);
           state.map.setZoom(16);
+          state.updateActivityLocation();
           m.redraw();
         }, function () {
           // If an error occurred while retrieving user's location, or if user
@@ -29,16 +48,32 @@ WhereComponent.oninit = function (vnode) {
       }
     },
     initializeMap: function (mapVnode) {
+
+      var defaultPosition = new google.maps.LatLng(33.1434, -117.1661);
       state.map = new google.maps.Map(mapVnode.dom, {
         // Center map at area in San Marcos
-        center: {lat: 33.1434, lng: -117.1661},
+        center: defaultPosition,
         zoom: 14
       });
+      // Geocoder is used to convert between latitude/longitude and real-world
+      // addresses
+      state.geocoder = new google.maps.Geocoder();
+
+      // Location marker is represented as a draggable drop-pin on the map
+      state.marker = new google.maps.Marker({
+        map: state.map,
+        position: defaultPosition,
+        draggable: true
+      });
+      state.marker.addListener('dragend', state.updateActivityLocation);
+      state.updateActivityLocation();
+
       google.maps.event.addListenerOnce(state.map, 'tilesloaded', function () {
         // Ask user for their current location and, if granted, center map at
         // that location (but only after the map has loaded)
         state.goToUserLocation();
       });
+
     }
   };
   vnode.state = state;
@@ -55,7 +90,12 @@ WhereComponent.view = function (vnode) {
       ]) : null,
     m('div.where-map', {oncreate: state.initializeMap}),
     m('div.screen-controls.where-controls', [
-      m('label[for=where-description]', 'Description'),
+      app.activity.address ?
+        m('div.where-location', [
+          m('span.where-location-label', 'Chosen Location:'),
+          ' ',
+          m('span.where-location-address', app.activity.address)
+        ]) : null,
       m('textarea.where-description#where-description', {
         placeholder: 'Enter any details here...'
       })

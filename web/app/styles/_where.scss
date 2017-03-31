@@ -24,12 +24,7 @@
   padding: 10px;
   background-color: #fff;
   text-align: left;
-  font-size: 0;
   box-shadow: 0 -1px 5px rgba(#000, 0.5);
-  label {
-    margin: 0;
-    margin-bottom: 2px;
-  }
   textarea {
     width: 100%;
     margin: 0;
@@ -37,4 +32,10 @@
     resize: none;
     box-sizing: border-box;
   }
+}
+.where-location {
+  margin-bottom: 4px;
+}
+.where-location-label {
+  font-weight: bold;
 }
