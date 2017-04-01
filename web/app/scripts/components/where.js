@@ -19,12 +19,13 @@ WhereComponent.oninit = function (vnode) {
           app.activity.latitude = markerPosition.lat();
           app.activity.longitude = markerPosition.lng();
           app.activity.address = results[0].formatted_address;
+          app.save();
           m.redraw();
         }
       });
     },
     goToUserLocation: function () {
-      if (navigator.geolocation) {
+      if (navigator.geolocation && !app.activity.latitude && !app.activity.longitude) {
         // Indicate that the browser is attempting to query user's location
         state.geolocating = true;
         m.redraw();
@@ -45,14 +46,27 @@ WhereComponent.oninit = function (vnode) {
           state.geolocating = false;
           m.redraw();
         });
+      } else {
+        state.geolocating = false;
       }
     },
     initializeMap: function (mapVnode) {
 
-      var defaultPosition = new google.maps.LatLng(33.1434, -117.1661);
+      var initialPosition;
+      if (app.activity.latitude && app.activity.longitude) {
+        // Use last-chosen location if set
+         initialPosition = new google.maps.LatLng(
+            app.activity.latitude,
+            app.activity.longitude
+         );
+      } else {
+          // Otherwise, use default location is San Marcos
+         initialPosition = new google.maps.LatLng(33.1434, -117.1661);
+      }
+
       state.map = new google.maps.Map(mapVnode.dom, {
         // Center map at area in San Marcos
-        center: defaultPosition,
+        center: initialPosition,
         zoom: 14
       });
       // Geocoder is used to convert between latitude/longitude and real-world
@@ -62,11 +76,10 @@ WhereComponent.oninit = function (vnode) {
       // Location marker is represented as a draggable drop-pin on the map
       state.marker = new google.maps.Marker({
         map: state.map,
-        position: defaultPosition,
+        position: initialPosition,
         draggable: true
       });
       state.marker.addListener('dragend', state.updateActivityLocation);
-      state.updateActivityLocation();
 
       google.maps.event.addListenerOnce(state.map, 'tilesloaded', function () {
         // Ask user for their current location and, if granted, center map at

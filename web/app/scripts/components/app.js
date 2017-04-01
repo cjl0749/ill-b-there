@@ -1,12 +1,11 @@
 'use strict';
 
 var m = require('mithril');
+var App = require('../models/app');
 var Api = require('../models/api');
 
 // Object for storing application state shared across all routes
-var app = {
-  activity: {}
-};
+var app = new App();
 
 var AppComponent = {};
 

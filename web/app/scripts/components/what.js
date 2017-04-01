@@ -36,6 +36,7 @@ WhatComponent.oninit = function (vnode) {
     setCategory: function (clickEvent, category) {
       clickEvent.preventDefault();
       app.activity.category = category.id;
+      app.save();
       m.route.set('/where');
     }
   };
