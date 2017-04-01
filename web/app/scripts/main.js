@@ -1,10 +1,10 @@
 'use strict';
 
 var m = require('mithril');
-var AppComponent = require('./app');
-var SignInComponent = require('./sign-in');
-var WhatComponent = require('./what');
-var WhereComponent = require('./where');
+var AppComponent = require('./components/app');
+var SignInComponent = require('./components/sign-in');
+var WhatComponent = require('./components/what');
+var WhereComponent = require('./components/where');
 
 m.route(document.querySelector('main'), '/sign-in', {
   '/sign-in': {

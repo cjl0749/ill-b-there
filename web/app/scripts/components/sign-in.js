@@ -1,8 +1,8 @@
 'use strict';
 
 var m = require('mithril');
-var Api = require('./api');
-var Users = require('./users');
+var Api = require('../models/api');
+var Users = require('../models/users');
 var LoadingComponent = require('./loading');
 
 var SignInComponent = {};

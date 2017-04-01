@@ -1,7 +1,7 @@
 'use strict';
 
 var m = require('mithril');
-var Activities = require('./activities');
+var Activities = require('../models/activities');
 var LoadingComponent = require('./loading');
 
 var WhatComponent = {};
