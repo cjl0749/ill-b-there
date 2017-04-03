@@ -8,6 +8,7 @@ var LoadingComponent = require('./loading');
 var SignInComponent = {};
 
 SignInComponent.oninit = function (vnode) {
+  var app = vnode.attrs.app;
   var state = {
     redirectToNextScreen: function () {
       m.route.set('/what');
@@ -22,7 +23,20 @@ SignInComponent.oninit = function (vnode) {
       Users.signIn({
         email: submitEvent.target.elements.email.value,
         password: submitEvent.target.elements.password.value,
-        onsuccess: state.redirectToNextScreen,
+        onsuccess: function () {
+          // Get the profile info of the current user (such as their name)
+          Users.getCurrentUser({
+            onsuccess: function (user) {
+              app.user = user;
+              state.redirectToNextScreen();
+            },
+            onerror: function () {
+              state.authenticating = false;
+              state.invalid = true;
+              m.redraw();
+            }
+          });
+        },
         onerror: function () {
           state.authenticating = false;
           state.invalid = true;

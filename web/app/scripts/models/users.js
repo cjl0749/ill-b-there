@@ -19,11 +19,28 @@ Users.signIn = function (args) {
       password: args.password
     },
     onsuccess: function (data) {
-      Api.authenticate(args.email, data.access_token);
+      Api.authenticate(data.access_token);
       args.onsuccess();
     },
     onerror: function (error) {
       args.onerror(error);
+    }
+  });
+};
+
+// Get the profile information of the currently-signed-in user
+Users.getCurrentUser = function (args) {
+  Api.get({
+    path: '/api/users/profile',
+    onsuccess: function (data) {
+      if (args.onsuccess) {
+        args.onsuccess(data);
+      }
+    },
+    onerror: function (error) {
+      if (args.onerror) {
+        args.onerror(error);
+      }
     }
   });
 };
