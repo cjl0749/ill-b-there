@@ -17,7 +17,7 @@ AppComponent.oninit = function (vnode) {
       m.route.set('/sign-in');
     }
   };
-  if (!Api.isAuthenticated() && m.route.get() !== 'sign-in') {
+  if (!Api.isAuthenticated() && m.route.get() !== '/sign-in') {
     m.route.set('/sign-in');
   }
   vnode.state = state;
