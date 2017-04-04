@@ -13,7 +13,7 @@ module.exports = {
     // Concatenate and conpress JavaScript
     javascripts: {
       joinTo: {
-        'scripts/main.js': ['app/scripts/*.js', /^node_modules/]
+        'scripts/main.js': ['app/scripts/**/*.js', /^node_modules/]
       }
     },
     // Conpile Sass to CSS

@@ -28,4 +28,21 @@ Users.signIn = function (args) {
   });
 };
 
+// Get the profile information of the currently-signed-in user
+Users.getCurrentUser = function (args) {
+  Api.get({
+    path: '/api/users/profile',
+    onsuccess: function (data) {
+      if (args.onsuccess) {
+        args.onsuccess(data);
+      }
+    },
+    onerror: function (error) {
+      if (args.onerror) {
+        args.onerror(error);
+      }
+    }
+  });
+};
+
 module.exports = Users;

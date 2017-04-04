@@ -1,7 +1,7 @@
 'use strict';
 
 var m = require('mithril');
-var Activities = require('./activities');
+var Activities = require('../models/activities');
 var LoadingComponent = require('./loading');
 
 var WhatComponent = {};
@@ -36,6 +36,7 @@ WhatComponent.oninit = function (vnode) {
     setCategory: function (clickEvent, category) {
       clickEvent.preventDefault();
       app.activity.category = category.id;
+      app.save();
       m.route.set('/where');
     }
   };
@@ -46,15 +47,23 @@ WhatComponent.oninit = function (vnode) {
 WhatComponent.view = function (vnode) {
   var state = vnode.state;
   return m('div.panel.panel-what', [
-    m('h2', 'What would you like to do?'),
+    m('h2', 'What are you interested in?'),
     state.categories ?
       m('div.what-categories', state.categories.map(function (category) {
+        var categorySlug = state.getCategorySlug(category);
         return m('div.what-category', {
-          class: state.getCategorySlug(category),
-          onclick: function (clickEvent) {
-            state.setCategory(clickEvent, category);
-          }
-        }, category.name);
+          class: 'what-category-' + categorySlug
+        }, [
+          m('div.what-category-bubble', {
+            onclick: function (clickEvent) {
+              state.setCategory(clickEvent, category);
+            }
+          }, m('img.what-category-icon', {
+            src: 'images/categories/' + categorySlug + '.svg',
+            alt: category.name
+          })),
+          m('span.what-category-name', category.name)
+        ]);
       })) :
     state.errorLoading ?
       m('p.error', 'Sorry, categories cannot be loaded at this time.') :
