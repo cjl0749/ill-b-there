@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\User;
+use App\Models\User;
 use App\Models\FriendRequest;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -18,7 +18,7 @@ class FriendRequestPolicy
      */
     public function create(User $user, $friendId)
     {
-        return !$user->friends()->contains($friendId);
+        return !$user->friends->contains($friendId);
     }
 
     /**

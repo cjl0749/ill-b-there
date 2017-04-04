@@ -17,7 +17,10 @@ class FriendRequestController extends Controller
      */
     public function index()
     {
-        return FriendRequest::where('user_id', Auth::id())->get();
+        return [
+			'friend_requests' => FriendRequest::where('user_id', Auth::id())->get(),
+			'received_friend_requests' => FriendRequest::where('friend_id', Auth::id())->get()
+		];
     }
 
     /**
@@ -32,7 +35,7 @@ class FriendRequestController extends Controller
 			'friend_id' => 'required|exists:users,id',
 		]);
 
-		$this->authorize('create', FriendRequest::class, $request->get('friend_id'));
+		$this->authorize('create', [FriendRequest::class, $request->get('friend_id')]);
 
 		$friendRequest = new FriendRequest();
 		$friendRequest->user_id = Auth::id();

@@ -92,7 +92,6 @@ class ActivityController extends Controller
         $this->authorize('create', Activity::class);
 
 		$this->validate($request, [
-			'title' => 'required|min:3',
 			'description' => '',
 			'community_id' => 'exists:communities,id',
 			'category_id' => 'required|exists:categories,id',
