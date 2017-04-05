@@ -8,6 +8,8 @@ var WhereComponent = {};
 WhereComponent.oninit = function (vnode) {
   var app = vnode.attrs.app;
   var state = {
+    // A number of milliseconds used to determine when the user stops typing
+    debounceDelay: 500,
     // Set the location of the in-progress activity to the location residing at
     // the marker's current position
     updateActivityLocation: function () {
@@ -23,6 +25,15 @@ WhereComponent.oninit = function (vnode) {
           m.redraw();
         }
       });
+    },
+    updateDescription: function (inputEvent) {
+      app.activity.description = inputEvent.target.value;
+      // Debounce the saving of the activity description until the user has
+      // finished typing
+      clearTimeout(state.descDebouncer);
+      state.descDebouncer = setTimeout(function () {
+        app.save();
+      }, state.debounceDelay);
     },
     goToUserLocation: function () {
       if (navigator.geolocation && !app.activity.latitude && !app.activity.longitude) {
@@ -110,8 +121,9 @@ WhereComponent.view = function (vnode) {
           m('span.where-location-address', app.activity.address)
         ]) : null,
       m('textarea.where-description#where-description', {
-        placeholder: 'Enter any details here (optional)'
-      })
+        placeholder: 'Enter any details here (optional)',
+        oninput: state.updateDescription
+      }, app.activity.description)
     ])
   ]) : null;
 };
