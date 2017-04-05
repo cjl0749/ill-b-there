@@ -11,7 +11,11 @@ use Illuminate\Support\Facades\Auth;
 class FriendRequestController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @api {get} /friend-requests List friend requests
+	 * @apiName index
+	 * @apiGroup FriendRequests
+	 *
+     * @apiDescription Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -24,7 +28,13 @@ class FriendRequestController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @api {post} /friend-requests Store new friend request
+	 * @apiName store
+	 * @apiGroup FriendRequests
+	 *
+     * @apiDescription Store a newly created resource in storage.
+	 *
+	 * @apiParam {Number}	friend_id	The ID of the user to add as a friend
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -46,7 +56,11 @@ class FriendRequestController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @api {delete} /friend-requests/:id Delete a friend request
+	 * @apiName destroy
+	 * @apiGroup FriendRequests
+	 *
+     * @apiDescription Remove the specified resource from storage.
      *
      * @param  \App\Models\FriendRequest  $friendRequest
      * @return \Illuminate\Http\Response
@@ -58,6 +72,15 @@ class FriendRequestController extends Controller
 		$friendRequest->delete();
     }
 
+	/**
+	 * @api {get} /friend-requests/:id/approve Approve friend requests
+	 * @apiName approve
+	 * @apiGroup FriendRequests
+	 *
+     * @apiDescription Approve a received friend request
+	 *
+	 * @param FriendRequest $friendRequest
+	 */
 	public function approve(FriendRequest $friendRequest)
 	{
 		$this->authorize('approve', $friendRequest);
@@ -68,6 +91,15 @@ class FriendRequestController extends Controller
 		$friendRequest->delete();
 	}
 
+	/**
+	 * @api {get} /friend-requests/:id/reject Reject friend requests
+	 * @apiName reject
+	 * @apiGroup FriendRequests
+	 *
+     * @apiDescription Reject a received friend request
+	 *
+	 * @param FriendRequest $friendRequest
+	 */
 	public function reject(FriendRequest $friendRequest)
 	{
 		$this->authorize('reject', $friendRequest);
