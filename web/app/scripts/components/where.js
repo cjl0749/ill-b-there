@@ -110,7 +110,7 @@ WhereComponent.view = function (vnode) {
           m('span.where-location-address', app.activity.address)
         ]) : null,
       m('textarea.where-description#where-description', {
-        placeholder: 'Enter any details here...'
+        placeholder: 'Enter any details here (optional)'
       })
     ])
   ]) : null;
