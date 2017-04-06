@@ -2,7 +2,6 @@
 
 var m = require('mithril');
 var App = require('../models/app');
-var Api = require('../models/api');
 var Users = require('../models/users');
 
 // Object for storing application state shared across all routes
@@ -14,14 +13,14 @@ AppComponent.oninit = function (vnode) {
   var state = {
     signOut: function (clickEvent) {
       clickEvent.preventDefault();
-      Api.clearAuthentication();
+      Users.clearAuthentication();
       m.route.set('/sign-in');
     }
   };
-  if (!Api.isAuthenticated() && m.route.get() !== '/sign-in') {
+  if (!Users.isAuthenticated() && m.route.get() !== '/sign-in') {
     m.route.set('/sign-in');
   }
-  if (Api.isAuthenticated()) {
+  if (Users.isAuthenticated()) {
     Users.getCurrentUser({
       onsuccess: function (user) {
         app.user = user;
@@ -38,7 +37,7 @@ AppComponent.view = function (vnode) {
     m('header.app-header', [
       m('img.app-logo', {src: 'images/logo.svg', alt: 'Logo'}),
       m('h1.app-title', 'I\'ll B There'),
-      Api.isAuthenticated() ? m('div.user-info', [
+      Users.isAuthenticated() ? m('div.user-info', [
         app.user ?
           m('span.user-full-name', app.user.firstname + ' ' + app.user.lastname)
         : null,

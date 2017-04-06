@@ -1,7 +1,9 @@
 'use strict';
 
 var Api = require('./api');
-var Activities = {};
+
+// The Activities model inherits all properties and methods from Api
+var Activities = Object.create(Api);
 
 Activities.getCategories = function (args) {
   Api.get({

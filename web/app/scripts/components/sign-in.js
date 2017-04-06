@@ -1,7 +1,6 @@
 'use strict';
 
 var m = require('mithril');
-var Api = require('../models/api');
 var Users = require('../models/users');
 var LoadingComponent = require('./loading');
 
@@ -45,7 +44,7 @@ SignInComponent.oninit = function (vnode) {
       });
     }
   };
-  if (Api.isAuthenticated()) {
+  if (Users.isAuthenticated()) {
     state.redirectToNextScreen();
   }
   vnode.state = state;
