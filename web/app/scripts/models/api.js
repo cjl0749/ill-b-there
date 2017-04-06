@@ -47,6 +47,21 @@ Api.request = function (method, args) {
   .catch(args.onerror);
 };
 
+// Retrieve the secret key used to authenticate a user signing in
+Api.getSecretKey = function (args) {
+  m.request({
+    method: 'GET',
+    // The secrey key is located on the local front-end server
+    url: 'secretkey',
+    // Treat the retrieved data as plain text instead of JSON
+    deserialize: function (data) {
+      return data;
+    }
+  })
+  .then(args.onsuccess)
+  .catch(args.onerror);
+};
+
 // Send a GET request to the server (i.e. retrieve existing entries)
 Api.get = function (args) {
   Api.request('GET', args);
