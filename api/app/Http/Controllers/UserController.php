@@ -49,7 +49,7 @@ class UserController extends Controller
     }
 
     /**
-     * @api {store} /users Store new user
+     * @api {post} /users Store new user
 	 * @apiName store
 	 * @apiGroup Users
 	 *
