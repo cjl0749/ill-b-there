@@ -5,6 +5,18 @@ var Api = require('./api');
 // The Users model inherits all properties and methods from Api
 var Users = Object.create(Api);
 
+Users.register = function (args) {
+  Api.post({
+    data: {
+      firstname: args.firstname,
+      lastname: args.lastname,
+      email: args.email,
+      password: args.password,
+      gender: args.gender
+    }
+  });
+};
+
 Users.signIn = function (args) {
   Api.getSecretKey({
     onsuccess: function (secretKey) {

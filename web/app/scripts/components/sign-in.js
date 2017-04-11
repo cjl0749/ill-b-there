@@ -73,8 +73,7 @@ SignInComponent.view = function (vnode) {
           m('input[type=password][name=password][required].user-password')
         ]),
         m('div.row', [
-          m('button[type=submit].sign-in-submit', 'Sign In'),
-          m('button[type=button].sign-in-register', 'Register')
+          m('button[type=submit].sign-in-submit', 'Sign In')
         ])
       ])
   ]);
