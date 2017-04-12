@@ -17,13 +17,15 @@ RegisterComponent.oninit = function (vnode) {
       state.registering = true;
       var fields = submitEvent.target.elements;
       Users.register({
-        firstname: fields.firstname.value,
-        lastname: fields.lastname.value,
-        email: fields.email.value,
-        password: fields.password.value,
-        nationality: fields.nationality.value,
-        gender: fields.gender.value,
-        birthdate: fields.birthdate.value,
+        data: {
+          firstname: fields.firstname.value,
+          lastname: fields.lastname.value,
+          email: fields.email.value,
+          password: fields.password.value,
+          nationality_id: Number(fields.nationality_id.value),
+          gender: fields.gender.value,
+          birthdate: fields.birthdate.value
+        },
         onsuccess: function () {
           state.registering = false;
           state.errorRegistering = false;
@@ -102,7 +104,7 @@ RegisterComponent.view = function (vnode) {
       ]),
       m('div.row', [
         m('label[for=user-nationality]', 'Nationality'),
-        m('select#user-nationality[name=nationality]', [
+        m('select#user-nationality[name=nationality_id]', [
           m('option', ''),
           state.nationalities ? state.nationalities.map(function (nat) {
             return m('option', {value: nat.id}, nat.identifier);

@@ -8,15 +8,7 @@ var Users = Object.create(Api);
 Users.register = function (args) {
   Api.post({
     path: '/api/users',
-    data: {
-      firstname: args.firstname,
-      lastname: args.lastname,
-      email: args.email,
-      password: args.password,
-      nationality_id: Number(args.nationality),
-      gender: args.gender,
-      birthdate: args.birthdate
-    },
+    data: args.data,
     onsuccess: function () {
       args.onsuccess();
     },
