@@ -69,7 +69,7 @@ RegisterComponent.view = function (vnode) {
     state.registering ?
       m(LoadingComponent) :
     state.registered ?
-      m('Registration successful! Redirecting to sign-in page...') :
+      m('p', 'Registration successful! Redirecting to sign-in page...') :
     m('form', {method: 'POST', onsubmit: state.register}, [
       m('div.row', [
         m('label[for=user-first-name]', 'First Name'),
