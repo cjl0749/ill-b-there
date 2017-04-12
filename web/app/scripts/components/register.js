@@ -7,6 +7,7 @@ var LoadingComponent = require('./loading');
 var RegisterComponent = {};
 
 RegisterComponent.oninit = function (vnode) {
+  var app = vnode.attrs.app;
   var state = {
     register: function (submitEvent) {
       // Since authentication will be performed asynchronously within
@@ -26,17 +27,36 @@ RegisterComponent.oninit = function (vnode) {
         onsuccess: function () {
           state.registering = false;
           state.errorRegistering = false;
-          state.registered = true;
+          state.signingIn = true;
           m.redraw();
-          // Show message that registration was successful for one second before
-          // redirecting to sign in page
-          setTimeout(function () {
-            m.route.set('/sign-in');
-          }, 1000);
+          Users.signIn({
+            email: fields.email.value,
+            password: fields.password.value,
+            onsuccess: function () {
+              // Get the profile info of the current user (such as their name)
+              Users.getCurrentUser({
+                onsuccess: function (user) {
+                  app.user = user;
+                  m.route.set('/what');
+                },
+                onerror: function () {
+                  state.signingIn = false;
+                  m.redraw();
+                }
+              });
+            },
+            onerror: function () {
+              state.signingIn = false;
+              m.redraw();
+            }
+          });
         },
-        onerror: function () {
+        onerror: function (error) {
           state.registering = false;
           state.errorRegistering = true;
+          state.signingIn = false;
+          // eslint-disable-next-line no-console
+          console.error(error);
         }
       });
     },
@@ -62,14 +82,12 @@ RegisterComponent.oninit = function (vnode) {
 RegisterComponent.view = function (vnode) {
   var state = vnode.state;
   return m('div.panel.panel-register', [
-    m('h2', 'Register'),
-    state.invalid ? m('div.row', [
+    m('h2', state.signingIn ? 'Signing In...' : 'Register'),
+    state.errorRegistering ? m('div.row', [
       m('p.error.register-error', 'Error registering new user')
     ]) : null,
-    state.registering ?
+    (state.registering || state.signingIn) ?
       m(LoadingComponent) :
-    state.registered ?
-      m('p', 'Registration successful! Redirecting to sign-in page...') :
     m('form', {method: 'POST', onsubmit: state.register}, [
       m('div.row', [
         m('label[for=user-first-name]', 'First Name'),

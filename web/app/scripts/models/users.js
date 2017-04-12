@@ -20,8 +20,8 @@ Users.register = function (args) {
     onsuccess: function () {
       args.onsuccess();
     },
-    onerror: function () {
-      args.onerror();
+    onerror: function (error) {
+      args.onerror(error);
     }
   });
 };
