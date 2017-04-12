@@ -61,16 +61,16 @@ SignInComponent.view = function (vnode) {
       m(LoadingComponent) :
       m('form', {method: 'POST', onsubmit: state.signIn}, [
         m('div.row', [
-          m('label', 'Email'),
-          m('input[type=email][name=email][required].user-email', {
+          m('label[for=user-email]', 'Email'),
+          m('input[type=email][name=email][required]#user-email', {
             oncreate: function (inputVnode) {
               inputVnode.dom.focus();
             }
           })
         ]),
         m('div.row', [
-          m('label', 'Password'),
-          m('input[type=password][name=password][required].user-password')
+          m('label[for=user-password]', 'Password'),
+          m('input[type=password][name=password][required]#user-password')
         ]),
         m('div.row', [
           m('button[type=submit].sign-in-submit', 'Sign In'),
