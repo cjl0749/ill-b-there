@@ -53,7 +53,14 @@ Users.signIn = function (args) {
         },
         onsuccess: function (data) {
           Api.authenticate(data.access_token);
-          args.onsuccess();
+          Users.getCurrentUser({
+            onsuccess: function (user) {
+              args.onsuccess(user);
+            },
+            onerror: function (error) {
+              args.onerror(error);
+            }
+          });
         },
         onerror: function (error) {
           args.onerror(error);

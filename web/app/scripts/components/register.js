@@ -32,18 +32,9 @@ RegisterComponent.oninit = function (vnode) {
           Users.signIn({
             email: fields.email.value,
             password: fields.password.value,
-            onsuccess: function () {
-              // Get the profile info of the current user (such as their name)
-              Users.getCurrentUser({
-                onsuccess: function (user) {
-                  app.user = user;
-                  m.route.set('/what');
-                },
-                onerror: function () {
-                  state.signingIn = false;
-                  m.redraw();
-                }
-              });
+            onsuccess: function (user) {
+              app.user = user;
+              m.route.set('/what');
             },
             onerror: function () {
               state.signingIn = false;
