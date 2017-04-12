@@ -7,12 +7,33 @@ var Users = Object.create(Api);
 
 Users.register = function (args) {
   Api.post({
+    path: '/api/users',
     data: {
       firstname: args.firstname,
       lastname: args.lastname,
       email: args.email,
       password: args.password,
-      gender: args.gender
+      nationality_id: Number(args.nationality),
+      gender: args.gender,
+      birthdate: args.birthdate
+    },
+    onsuccess: function () {
+      args.onsuccess();
+    },
+    onerror: function () {
+      args.onerror();
+    }
+  });
+};
+
+Users.getRegisterDropdownOptions = function (args) {
+  Api.get({
+    path: '/api/users/create',
+    onsuccess: function (data) {
+      args.onsuccess(data);
+    },
+    onerror: function (error) {
+      args.onerror(error);
     }
   });
 };
