@@ -46,12 +46,11 @@ RegisterComponent.oninit = function (vnode) {
             }
           });
         },
-        onerror: function (error) {
+        onerror: function () {
           state.registering = false;
           state.errorRegistering = true;
           state.signingIn = false;
-          // eslint-disable-next-line no-console
-          console.error(error);
+          m.redraw();
         }
       });
     },
