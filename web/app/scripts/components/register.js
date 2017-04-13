@@ -100,7 +100,9 @@ RegisterComponent.view = function (vnode) {
       ]),
       m('div.row', [
         m('label[for=user-password]', 'Password'),
-        m('input[type=password][name=password][required]#user-password')
+        m('input[type=password][name=password][required]#user-password', {
+          placeholder: 'at least 5 characters'
+        })
       ]),
       m('div.row', [
         m('label[for=user-nationality]', 'Nationality'),
