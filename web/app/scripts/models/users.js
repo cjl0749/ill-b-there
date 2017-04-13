@@ -40,8 +40,8 @@ Users.signIn = function (args) {
           client_id: 2,
           client_secret: secretKey,
           scope: '',
-          username: args.email,
-          password: args.password
+          username: args.data.email,
+          password: args.data.password
         },
         onsuccess: function (data) {
           Api.authenticate(data.access_token);
