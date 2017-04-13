@@ -76,7 +76,12 @@ RegisterComponent.oninit = function (vnode) {
 RegisterComponent.view = function (vnode) {
   var state = vnode.state;
   return m('div.panel.panel-register', [
-    m('h2', state.signingIn ? 'Signing In...' : 'Register'),
+    m('h2', state.signingIn ?
+        'Signing In...' :
+      state.registering ?
+        'Registering...' :
+      'Register'
+    ),
     state.errorRegistering ? m('div.row', [
       m('p.error.register-error', 'Error registering new user')
     ]) : null,
