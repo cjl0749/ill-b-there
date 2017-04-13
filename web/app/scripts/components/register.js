@@ -32,8 +32,10 @@ RegisterComponent.oninit = function (vnode) {
           state.signingIn = true;
           m.redraw();
           Users.signIn({
-            email: fields.email.value,
-            password: fields.password.value,
+            data: {
+              email: fields.email.value,
+              password: fields.password.value
+            },
             onsuccess: function (user) {
               app.user = user;
               m.route.set('/what');
