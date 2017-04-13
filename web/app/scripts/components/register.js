@@ -105,7 +105,7 @@ RegisterComponent.view = function (vnode) {
         })
       ]),
       m('div.row', [
-        m('label[for=user-nationality]', 'Nationality'),
+        m('label[for=user-nationality]', 'Nationality (optional)'),
         m('select#user-nationality[name=nationality_id]', [
           m('option', ''),
           state.nationalities ? state.nationalities.map(function (nat) {
