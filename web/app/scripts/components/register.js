@@ -122,7 +122,9 @@ RegisterComponent.view = function (vnode) {
       ]),
       m('div.row', [
         m('label[for=user-birthdate]', 'Birthday'),
-        m('input[type=text][name=birthdate][required]#user-birthdate')
+        m('input[type=text][name=birthdate][required]#user-birthdate', {
+          placeholder: 'YYYY-MM-DD'
+        })
       ]),
       m('div.row', [
         m('button[type=submit].sign-in-submit', 'Register')
