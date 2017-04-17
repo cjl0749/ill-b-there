@@ -17,7 +17,7 @@ AppComponent.oninit = function (vnode) {
       m.route.set('/sign-in');
     }
   };
-  if (!Users.isAuthenticated() && m.route.get() !== '/sign-in') {
+  if (!Users.isAuthenticated() && m.route.get() !== '/sign-in' && m.route.get() !== '/register') {
     m.route.set('/sign-in');
   }
   if (Users.isAuthenticated()) {
@@ -37,12 +37,19 @@ AppComponent.view = function (vnode) {
     m('header.app-header', [
       m('img.app-logo', {src: 'images/logo.svg', alt: 'Logo'}),
       m('h1.app-title', 'I\'ll B There'),
-      Users.isAuthenticated() ? m('div.user-info', [
-        app.user ?
-          m('span.user-full-name', app.user.firstname + ' ' + app.user.lastname)
-        : null,
-        m('a[href=#]', {onclick: state.signOut}, 'Sign Out')
-      ]) : null
+      m('div.app-header-content',
+        Users.isAuthenticated() ? [
+          app.user ?
+            m('span.user-full-name', app.user.firstname + ' ' + app.user.lastname)
+          : null,
+          m('a[href=#]', {onclick: state.signOut}, 'Sign Out')
+        ] : [
+          m.route.get() === '/sign-in' ?
+            m('a.register-link[href=#!/register]', 'Register') :
+          m.route.get() === '/register' ?
+            m('a.register-link[href=#!/sign-in]', 'Sign In') : null
+        ]
+      )
     ]),
     // AppComponent acts as a layout which accepts any arbitrary sub-component
     // for content (this is to avoid duplication of static components, such as

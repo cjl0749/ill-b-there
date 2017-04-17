@@ -20,21 +20,13 @@ SignInComponent.oninit = function (vnode) {
       state.invalid = false;
       state.authenticating = true;
       Users.signIn({
-        email: submitEvent.target.elements.email.value,
-        password: submitEvent.target.elements.password.value,
-        onsuccess: function () {
-          // Get the profile info of the current user (such as their name)
-          Users.getCurrentUser({
-            onsuccess: function (user) {
-              app.user = user;
-              state.redirectToNextScreen();
-            },
-            onerror: function () {
-              state.authenticating = false;
-              state.invalid = true;
-              m.redraw();
-            }
-          });
+        data: {
+          email: submitEvent.target.elements.email.value,
+          password: submitEvent.target.elements.password.value
+        },
+        onsuccess: function (user) {
+            app.user = user;
+            state.redirectToNextScreen();
         },
         onerror: function () {
           state.authenticating = false;
@@ -73,8 +65,7 @@ SignInComponent.view = function (vnode) {
           m('input[type=password][name=password][required]#user-password')
         ]),
         m('div.row', [
-          m('button[type=submit].sign-in-submit', 'Sign In'),
-          m('button[type=button].sign-in-register', 'Register')
+          m('button[type=submit].sign-in-submit', 'Sign In')
         ])
       ])
   ]);
