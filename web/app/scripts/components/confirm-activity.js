@@ -36,7 +36,7 @@ ConfirmActivityComponent.oninit = function (vnode) {
           // page
           setTimeout(function () {
             m.route.set('/activity/:key', {key: activity.id});
-          }, 2000);
+          }, 1000);
         },
         onerror: function () {
           state.creating = false;
