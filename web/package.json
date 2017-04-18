@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "flatpickr": "^2.5.4",
-    "mithril": "^1.0.1"
+    "mithril": "^1.0.1",
+    "moment": "^2.18.1"
   }
 }

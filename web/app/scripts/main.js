@@ -6,6 +6,7 @@ var SignInComponent = require('./components/sign-in');
 var WhatComponent = require('./components/what');
 var WhereComponent = require('./components/where');
 var WhenComponent = require('./components/when');
+var CreatingActivityComponent = require('./components/creating-activity');
 
 m.route(document.querySelector('main'), '/sign-in', {
   '/sign-in': {
@@ -26,6 +27,11 @@ m.route(document.querySelector('main'), '/sign-in', {
   '/when': {
     render: function () {
       return m(AppComponent, {ContentComponent: WhenComponent});
+    }
+  },
+  '/creating-activity': {
+    render: function () {
+      return m(AppComponent, {ContentComponent: CreatingActivityComponent});
     }
   }
 });

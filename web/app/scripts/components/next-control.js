@@ -7,10 +7,11 @@ var m = require('mithril');
 var NextControlComponent = {};
 
 NextControlComponent.view = function (vnode) {
-  return m('button[type=submit].next-screen-control', m('img', {
-    src: 'images/next.svg',
-    alt: 'Next',
+  return m('button[type=submit].next-screen-control', {
     onclick: vnode.attrs.onclick
+  }, m('img', {
+    src: 'images/next.svg',
+    alt: 'Next'
   }));
 };
 

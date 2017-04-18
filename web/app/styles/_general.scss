@@ -39,3 +39,12 @@ p.error {
   color: $red;
   font-weight: bold;
 }
+
+// Checkmark icon
+img.checkmark-icon {
+  display: block;
+  $icon-size: 100px;
+  width: $icon-size;
+  height: $icon-size;
+  margin: 0 auto;
+}

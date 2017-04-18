@@ -75,7 +75,6 @@ class ActivityController extends Controller
 	 *
      * @apiDescription Store a newly created activity in storage.
 	 *
-	 * @apiParam {String}	title			The title of the activity
 	 * @apiParam {String}	[description]	The description of the activity
 	 * @apiParam {Number}	[community_id]	The ID of the community to link the activity to
 	 * @apiParam {Number}	category_id		The ID of the category to link the activity to
@@ -138,7 +137,6 @@ class ActivityController extends Controller
 		$activity->creator_id = Auth::id();
 		$activity->community_id = $request->get('community_id');
 		$activity->category_id = $request->get('category_id');
-		$activity->title = $request->get('title');
 		$activity->description = $request->get('description');
 		$activity->longitude = $longitude;
 		$activity->latitude = $latitude;
@@ -198,7 +196,6 @@ class ActivityController extends Controller
      *
 	 * @apiParam {Number}	id		The ID of the activity
 	 *
-	 * @apiParam {String}	[title]			The title of the activity
 	 * @apiParam {String}	[description]	The description of the activity
 	 * @apiParam {Number}	[longitude]		The longitude of the location of the event.
 	 * @apiParam {Number}	[latitude]		The latitude of the location of the event.
@@ -214,7 +211,6 @@ class ActivityController extends Controller
         $this->authorize('update', $activity);
 
 		$this->validate($request, [
-			'title' => 'min:3',
 			'description' => '',
 			'longitude' => 'numeric',
 			'latitude' => 'numeric',
@@ -250,8 +246,6 @@ class ActivityController extends Controller
 			$longitude = $response->results[0]->geometry->location->lng;
 		}
 
-		if ($request->has('title'))
-			$activity->title = $request->get('title');
 		if ($request->has('description'))
 			$activity->description = $request->get('description');
 		if ($latitude !== null)
