@@ -13,9 +13,6 @@ WhenComponent.oninit = function (vnode) {
     // The default number of minutes to increment by when changing the time
     // (default is 5 minutes)
     minuteIncrement: 5,
-    // The explicit format of the activity date/time (the format accepted by the
-    // server)
-    dateTimeFormat: 'YYYY-MM-DD HH:mm:ss',
     // Get the next minute value (relative to the current minute) that has a
     // minute value divisible by 5 (e.g. if the time is 5:31pm, the rounded time
     // will be 5:35pm, but if the time is 5:35pm, it will stay as such)
@@ -26,7 +23,7 @@ WhenComponent.oninit = function (vnode) {
     getInitialDateTime: function (datetime) {
       if (app.activity.event_at) {
         // Use last-saved date/time if saved
-        return moment(app.activity.event_at, state.dateTimeFormat);
+        return moment(app.activity.event_at, app.dateTimeFormat);
       } else {
         // Otherwise, use next 5-minute increment from the current date/time
         return moment({
@@ -40,7 +37,7 @@ WhenComponent.oninit = function (vnode) {
     },
     getFormattedDateTime: function () {
       var datetime = moment(state.picker.input.value);
-      return datetime.format(state.dateTimeFormat);
+      return datetime.format(app.dateTimeFormat);
     },
     // Saves the selected date/time to the app data
     saveDateTime: function () {
@@ -62,7 +59,7 @@ WhenComponent.oninit = function (vnode) {
     },
     goToNextScreen: function () {
       state.saveDateTime();
-      m.route.set('/creating-activity');
+      m.route.set('/confirm-activity');
     }
   };
   vnode.state = state;
