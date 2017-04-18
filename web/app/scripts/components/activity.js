@@ -7,7 +7,7 @@ var LoadingComponent = require('./loading');
 // An individual, existing activity
 var ActivityComponent = {};
 
-ActivityComponent.oncreate = function (vnode) {
+ActivityComponent.oninit = function (vnode) {
   var state = {
     loadActivity: function () {
       state.loading = true;
