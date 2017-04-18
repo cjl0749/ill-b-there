@@ -23,7 +23,7 @@ ConfirmActivityComponent.oninit = function (vnode) {
       state.creationError = false;
       Activities.createActivity({
         activity: app.activity,
-        onsuccess: function () {
+        onsuccess: function (activity) {
           state.creating = false;
           state.creationError = false;
           state.created = true;
@@ -34,9 +34,9 @@ ConfirmActivityComponent.oninit = function (vnode) {
           m.redraw();
           // Display success message for a moment before redirecting to activity
           // page
-          // setTimeout(function () {
-          //   m.route.set('/activity/:id');
-          // }, 2000);
+          setTimeout(function () {
+            m.route.set('/activity/:key', {key: activity.id});
+          }, 2000);
         },
         onerror: function () {
           state.creating = false;
