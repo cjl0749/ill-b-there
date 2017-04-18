@@ -40,15 +40,19 @@ AppComponent.view = function (vnode) {
       m('div.app-header-content',
         Users.isAuthenticated() ? [
           app.user ?
-            m('span.user-full-name', app.user.firstname + ' ' + app.user.lastname)
-          : null,
-          m('a[href=#]', {onclick: state.signOut}, 'Sign Out')
-        ] : [
+            m('span.user-full-name',
+              app.user.firstname + ' ' + app.user.lastname) : null
+        ] : null,
+        m('nav.app-navigation', m('ul', [
+          Users.isAuthenticated() ? [
+            m('li', m('a[href=#!/what]', 'Create Activity')),
+            m('li', m('a[href=#]', {onclick: state.signOut}, 'Sign Out'))
+          ] :
           m.route.get() === '/sign-in' ?
-            m('a.register-link[href=#!/register]', 'Register') :
+            m('li', m('a.register-link[href=#!/register]', 'Register')) :
           m.route.get() === '/register' ?
-            m('a.register-link[href=#!/sign-in]', 'Sign In') : null
-        ]
+            m('li', m('a.register-link[href=#!/sign-in]', 'Sign In')) : null
+        ]))
       )
     ]),
     // AppComponent acts as a layout which accepts any arbitrary sub-component
