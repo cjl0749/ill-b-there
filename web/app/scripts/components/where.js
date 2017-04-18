@@ -56,6 +56,8 @@ WhereComponent.oninit = function (vnode) {
           // If an error occurred while retrieving user's location, or if user
           // denies access to their location, dismiss the geolocation panel
           state.geolocating = false;
+          // Ensure that default location is persisted if geolocation fails
+          state.updateActivityLocation();
           m.redraw();
         });
       } else {
