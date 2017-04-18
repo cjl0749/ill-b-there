@@ -1,0 +1,27 @@
+// Page where the details for an individual activity is displayed
+
+.panel-activity {
+  min-width: 300px;
+  h2 {
+    margin-bottom: 0;
+  }
+  .activity-creator-name {
+    display: block;
+    margin-bottom: 1em;
+  }
+}
+
+.activity-field-name {
+  margin: 0;
+  font-weight: bold;
+}
+
+.activity-field-value {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.activity-map {
+  width: 100%;
+  height: 200px;
+}

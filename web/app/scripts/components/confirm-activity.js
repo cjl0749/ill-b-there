@@ -1,7 +1,6 @@
 'use strict';
 
 var m = require('mithril');
-var moment = require('moment');
 var Activities = require('../models/activities');
 var LoadingComponent = require('./loading');
 var CompletedComponent = require('./completed');
@@ -45,10 +44,6 @@ ConfirmActivityComponent.oninit = function (vnode) {
           m.redraw();
         }
       });
-    },
-    prettifyDateTime: function (datetimeStr) {
-      return moment(datetimeStr, app.dateTimeFormat)
-        .format('ddd, MMM Do, YYYY [at] h:MMa');
     }
   };
   vnode.state = state;
@@ -75,16 +70,16 @@ ConfirmActivityComponent.view = function (vnode) {
           m('div.activity-field-value', app.activity.category_name)
         ] : null,
         app.activity.description ? [
-          m('label', 'Description'),
+          m('label.activity-field-name', 'Description'),
           m('div.activity-field-value', app.activity.description)
         ] : null,
         app.activity.address ? [
-          m('label', 'Where'),
+          m('label.activity-field-name', 'Where'),
           m('div.activity-field-value', app.activity.address)
         ] : null,
         app.activity.event_at ? [
-          m('label', 'When'),
-          m('div.activity-field-value', state.prettifyDateTime(app.activity.event_at))
+          m('label.activity-field-name', 'When'),
+          m('div.activity-field-value', Activities.prettifyDateTime(app.activity.event_at, app.dateTimeFormat))
         ] : null
       ]),
       (app.activity.category_name && app.activity.address && app.activity.event_at) ?

@@ -163,7 +163,7 @@ class ActivityController extends Controller
     {
 		$this->authorize('view', $activity);
 
-		$activity->load(['creator', 'participants', 'community']);
+		$activity->load(['creator', 'participants', 'community', 'category']);
 
         return $activity;
     }
