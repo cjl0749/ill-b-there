@@ -3,6 +3,7 @@
 var m = require('mithril');
 var Activities = require('../models/activities');
 var LoadingComponent = require('./loading');
+var CompletedComponent = require('./completed');
 
 var CreatingActivityComponent = {};
 
@@ -55,7 +56,7 @@ CreatingActivityComponent.view = function (vnode) {
       m('p.error', 'There was an error creating the activity.')
     ] : [
       m('h2', 'Activity Created!'),
-      m('img.checkmark-icon', {src: 'images/checkmark.svg', alt: 'Done!'})
+      m(CompletedComponent)
     ]
   ]);
 };
