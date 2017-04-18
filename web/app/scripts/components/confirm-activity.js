@@ -65,23 +65,28 @@ ConfirmActivityComponent.view = function (vnode) {
         m('p.error', 'There was an error creating the activity.') : null,
       m('h2', 'Confirm Activity'),
       m('div.confirm-activity-fields', [
-        m('label', 'What'),
-        m('div.activity-field-value', app.activity.category_name),
+        m('label.activity-field-name', 'What'),
+        app.activity.category_name ?
+          m('div.activity-field-value', app.activity.category_name) :
+          m('div.activity-field-value.error', 'Missing category'),
         app.activity.description ? [
           m('label.activity-field-name', 'Description'),
           m('div.activity-field-value', app.activity.description)
         ] : null,
         m('label.activity-field-name', 'Where'),
-        m('div.activity-field-value', app.activity.address),
+        app.activity.address ?
+          m('div.activity-field-value', app.activity.address) :
+          m('div.activity-field-value.error', 'Missing location'),
         m('label.activity-field-name', 'When'),
-        m('div.activity-field-value',
-          Activities.prettifyDateTime(app.activity.event_at, app.dateTimeFormat))
+        app.activity.event_at ?
+          m('div.activity-field-value',
+            Activities.prettifyDateTime(app.activity.event_at, app.dateTimeFormat)) :
+          m('div.activity-field-value.error', 'Missing date/time')
       ]),
       (app.activity.category_name && app.activity.address && app.activity.event_at) ?
         m('button[type=submit]', {
           onclick: state.createActivity
-        }, 'Create Activity') :
-      m('p.error', 'Activity missing some fields.')
+        }, 'Create Activity') : null
     ]
   ]);
 };
