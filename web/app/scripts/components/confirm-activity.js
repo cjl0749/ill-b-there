@@ -65,22 +65,17 @@ ConfirmActivityComponent.view = function (vnode) {
         m('p.error', 'There was an error creating the activity.') : null,
       m('h2', 'Confirm Activity'),
       m('div.confirm-activity-fields', [
-        app.activity.category_name ? [
-          m('label', 'What'),
-          m('div.activity-field-value', app.activity.category_name)
-        ] : null,
+        m('label', 'What'),
+        m('div.activity-field-value', app.activity.category_name),
         app.activity.description ? [
           m('label.activity-field-name', 'Description'),
           m('div.activity-field-value', app.activity.description)
         ] : null,
-        app.activity.address ? [
-          m('label.activity-field-name', 'Where'),
-          m('div.activity-field-value', app.activity.address)
-        ] : null,
-        app.activity.event_at ? [
-          m('label.activity-field-name', 'When'),
-          m('div.activity-field-value', Activities.prettifyDateTime(app.activity.event_at, app.dateTimeFormat))
-        ] : null
+        m('label.activity-field-name', 'Where'),
+        m('div.activity-field-value', app.activity.address),
+        m('label.activity-field-name', 'When'),
+        m('div.activity-field-value',
+          Activities.prettifyDateTime(app.activity.event_at, app.dateTimeFormat))
       ]),
       (app.activity.category_name && app.activity.address && app.activity.event_at) ?
         m('button[type=submit]', {
