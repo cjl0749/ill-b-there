@@ -16,7 +16,11 @@ class UserController extends Controller
 	private $genders = ['male', 'female', 'unknown'];
 
     /**
-     * Display a listing of the resource.
+     * @api {get} /users List the users
+	 * @apiName index
+	 * @apiGroup Users
+	 *
+     * @apiDescription Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -28,7 +32,11 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * @api {get} /users/create User creation form
+	 * @apiName create
+	 * @apiGroup Users
+	 *
+     * @apiDescription Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -43,7 +51,19 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @api {post} /users Store new user
+	 * @apiName store
+	 * @apiGroup Users
+	 *
+     * @apiDescription Store a newly created resource in storage.
+	 *
+	 * @apiParam {String}	firstname			Firstname
+	 * @apiParam {String}	lastname			Lastname
+	 * @apiParam {String}	email				Email address
+	 * @apiParam {String}	password			Password
+	 * @apiParam {String}	gender				Gender of the user. Can be "male", "female" or "unknown"
+	 * @apiParam {Number}	[nationality_id]	Nationality
+	 * @apiParam {String}	birthdate			Date of birth
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -74,7 +94,13 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @api {get} /users/:id Display an user
+	 * @apiName show
+	 * @apiGroup Users
+	 *
+     * @apiDescription Display the specified resource.
+	 *
+	 * @apiParam {Number}	id	The ID of the user
      *
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
@@ -89,7 +115,11 @@ class UserController extends Controller
     }
 
 	/**
-	 * Display the user profile
+	 * @api {get} /users/profile Display logged in user
+	 * @apiName profile
+	 * @apiGroup Users
+	 *
+     * @apiDescription Display the user profile
 	 *
      * @return \Illuminate\Http\Response
 	 */
@@ -97,14 +127,27 @@ class UserController extends Controller
 	{
 		$user = Auth::user();
 
-		$user->load(['communities', 'applications', 'activities']);
+		$user->load([
+			'communities',
+			'applications',
+			'activities',
+			'friends',
+			'friendRequests',
+			'receivedFriendRequests',
+		]);
 
 		return $user;
 	}
 
     /**
-     * Show the form for editing the specified resource.
+     * @api {get} /users/:id/edit User edition form
+	 * @apiName edit
+	 * @apiGroup Users
+	 *
+     * @apiDescription Show the form for editing the specified resource.
      *
+	 * @apiParam {Number}	id	The ID of the user
+	 *
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
@@ -124,8 +167,22 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @api {put} /users/:id Update an user
+	 * @apiName update
+	 * @apiGroup Users
+	 *
+     * @apiDescription Update the specified resource in storage.
      *
+	 * @apiParam {Number}	id	The ID of the user
+	 *
+	 * @apiParam {String}	firstname			Firstname
+	 * @apiParam {String}	lastname			Lastname
+	 * @apiParam {String}	email				Email address
+	 * @apiParam {String}	password			Password
+	 * @apiParam {String}	gender				Gender of the user. Can be "male", "female" or "unknown"
+	 * @apiParam {Number}	[nationality_id]	Nationality
+	 * @apiParam {String}	birthdate			Date of birth
+	 *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
@@ -165,8 +222,14 @@ class UserController extends Controller
 
 
     /**
-     * Remove the specified resource from storage.
+     * @api {delete} /users/:id Delete an user
+	 * @apiName destroy
+	 * @apiGroup Users
+	 *
+     * @apiDescription Remove the specified resource from storage.
      *
+	 * @apiParam {Number}	id	The ID of the user
+	 *
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */

@@ -10,7 +10,7 @@
 		{
 			"name": "List users",
 			"request": {
-				"url": "http://api.dev.cs441.lan/api/users",
+				"url": "https://api.illbthere.localhost/api/users",
 				"method": "GET",
 				"header": [
 					{
@@ -32,7 +32,7 @@
 		{
 			"name": "Authenticate",
 			"request": {
-				"url": "http://api.dev.cs441.lan/oauth/token",
+				"url": "https://api.illbthere.localhost/oauth/token",
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -89,7 +89,7 @@
 		{
 			"name": "Show user creation form",
 			"request": {
-				"url": "http://api.dev.cs441.lan/api/users/create",
+				"url": "https://api.illbthere.localhost/api/users/create",
 				"method": "GET",
 				"header": [
 					{
@@ -106,7 +106,7 @@
 		{
 			"name": "List communities",
 			"request": {
-				"url": "http://api.dev.cs441.lan/api/communities",
+				"url": "https://api.illbthere.localhost/api/communities",
 				"method": "GET",
 				"header": [
 					{
@@ -128,7 +128,7 @@
 		{
 			"name": "Create community",
 			"request": {
-				"url": "http://api.dev.cs441.lan/api/communities",
+				"url": "https://api.illbthere.localhost/api/communities",
 				"method": "POST",
 				"header": [
 					{
@@ -178,7 +178,7 @@
 		{
 			"name": "Show first community",
 			"request": {
-				"url": "http://api.dev.cs441.lan/api/communities/1",
+				"url": "https://api.illbthere.localhost/api/communities/1",
 				"method": "GET",
 				"header": [
 					{
@@ -200,7 +200,7 @@
 		{
 			"name": "Join first community",
 			"request": {
-				"url": "http://api.dev.cs441.lan/api/communities/1/join",
+				"url": "https://api.illbthere.localhost/api/communities/1/join",
 				"method": "GET",
 				"header": [
 					{
@@ -222,7 +222,7 @@
 		{
 			"name": "Approve member on 2nd community",
 			"request": {
-				"url": "http://api.dev.cs441.lan/api/communities/2/members/2/approve",
+				"url": "https://api.illbthere.localhost/api/communities/2/members/2/approve",
 				"method": "GET",
 				"header": [
 					{
@@ -244,7 +244,7 @@
 		{
 			"name": "Show activity creation form",
 			"request": {
-				"url": "http://api.dev.cs441.lan/api/activities/create",
+				"url": "https://api.illbthere.localhost/api/activities/create",
 				"method": "GET",
 				"header": [
 					{
@@ -266,7 +266,7 @@
 		{
 			"name": "Show first activity",
 			"request": {
-				"url": "http://api.dev.cs441.lan/api/activities/1",
+				"url": "https://api.illbthere.localhost/api/activities/1",
 				"method": "GET",
 				"header": [
 					{
@@ -288,7 +288,7 @@
 		{
 			"name": "Create activity",
 			"request": {
-				"url": "http://api.dev.cs441.lan/api/activities",
+				"url": "https://api.illbthere.localhost/api/activities",
 				"method": "POST",
 				"header": [
 					{
@@ -344,7 +344,7 @@
 		{
 			"name": "Update first activity",
 			"request": {
-				"url": "http://api.dev.cs441.lan/api/activities/1",
+				"url": "https://api.illbthere.localhost/api/activities/1",
 				"method": "PUT",
 				"header": [
 					{
@@ -381,7 +381,7 @@
 		{
 			"name": "List activities nearby",
 			"request": {
-				"url": "http://api.dev.cs441.lan/api/activities?latitude=33.129122&longitude=-117.159769",
+				"url": "https://api.illbthere.localhost/api/activities?latitude=33.129122&longitude=-117.159769",
 				"method": "GET",
 				"header": [
 					{
@@ -403,7 +403,7 @@
 		{
 			"name": "Show profile",
 			"request": {
-				"url": "http://api.dev.cs441.lan/api/users/profile",
+				"url": "https://api.illbthere.localhost/api/users/profile",
 				"method": "GET",
 				"header": [
 					{

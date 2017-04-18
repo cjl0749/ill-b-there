@@ -1,0 +1,68 @@
+// "What" page with activity categories
+
+// Assign a different color to each category, based on the app color palette
+// defined in _variables.scss
+$category-colors: (
+  'smoke': $brown,
+  'lunch': $red,
+  'drink': $brown,
+  'movie': $purple,
+  'video-game': $orange,
+  'chat': $blue,
+  'sport': $green
+);
+
+.panel-what {
+  max-width: 500px;
+  h2 {
+    text-align: center;
+  }
+}
+
+.what-categories {
+  text-align: center;
+}
+.what-category {
+  display: inline-block;
+}
+
+.what-category-bubble {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+  margin-bottom: 4px;
+  padding: 10px;
+  border: solid 2px darken($green, 5%);
+  border-radius: 50%;
+  background-color: $green;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  &:hover {
+    background-color: lighten($green, 10%);
+  }
+  // Apply the above category colors to each category
+  @each $category-name, $category-color in $category-colors {
+    .what-category-#{$category-name} & {
+      border-color: darken($category-color, 10%);
+      background-color: $category-color;
+      // Highlight icon on hover by lightening it
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+}
+
+.what-category-icon {
+  $icon-size: 50px;
+  width: $icon-size;
+  height: $icon-size;
+}
+
+.what-category-name {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+}

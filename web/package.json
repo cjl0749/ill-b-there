@@ -1,0 +1,34 @@
+{
+  "name": "ill-b-there",
+  "version": "0.1.0",
+  "description": "",
+  "main": "''",
+  "scripts": {
+    "lint": "eslint app/scripts/*.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjl0749/ill-b-there.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cjl0749/ill-b-there/issues"
+  },
+  "homepage": "https://github.com/cjl0749/ill-b-there#readme",
+  "devDependencies": {
+    "autoprefixer": "^6.6.0",
+    "brunch": "^2.10.9",
+    "eslint": "^3.19.0",
+    "javascript-brunch": "^2.0.0",
+    "postcss-brunch": "github:caleb531/postcss-brunch",
+    "sass-brunch": "github:caleb531/sass-brunch",
+    "uglify-js-brunch": "^2.0.1"
+  },
+  "dependencies": {
+    "flatpickr": "^2.5.4",
+    "mithril": "^1.0.1",
+    "moment": "^2.18.1"
+  }
+}

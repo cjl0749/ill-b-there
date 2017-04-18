@@ -50,4 +50,19 @@ Route::group(['middleware' => ['auth:api']], function()
 		});
 	});
 	Route::resource('activities', 'ActivityController');
+
+	Route::group(['prefix' => '/friend-requests'], function()
+	{
+		Route::group(['prefix' => '/{friendRequest}'], function()
+		{
+			Route::get('/approve', ['uses' => 'FriendRequestController@approve']);
+			Route::get('/reject', ['uses' => 'FriendRequestController@reject']);
+		});
+	});
+	Route::resource('friend-requests', 'FriendRequestController', ['only' => ['index', 'store', 'destroy']]);
+
+	Route::group(['prefix' => '/friends'], function()
+	{
+		Route::delete('/{user}', ['uses' => 'FriendController@destroy']);
+	});
 });

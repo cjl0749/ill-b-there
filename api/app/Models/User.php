@@ -5,16 +5,12 @@ namespace App\Models;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token', 'nationality_id'
     ];
@@ -22,6 +18,20 @@ class User extends Authenticatable
 	protected $dates = [
 		'birthdate',
 	];
+
+	public function getFirstnameAttribute($value)
+	{
+		return ucfirst($value);
+	}
+
+	public function getLastnameAttribute($value)
+	{
+		return ucfirst($value);
+	}
+
+	/*
+	 * Relationships
+	 */
 
 	public function nationality()
 	{
@@ -43,4 +53,18 @@ class User extends Authenticatable
 		return $this->belongsToMany(Activity::class)->orderBy('event_at', 'DESC');
 	}
 
+	public function friends()
+	{
+		return $this->belongsToMany(User::class, 'friends', 'user_id', 'friend_id');
+	}
+
+	public function friendRequests()
+	{
+		return $this->hasMany(FriendRequest::class);
+	}
+
+	public function receivedFriendRequests()
+	{
+		return $this->hasMany(FriendRequest::class, 'friend_id');
+	}
 }

@@ -1,0 +1,24 @@
+// Generic floating panels
+
+.panel {
+  display: inline-block;
+  // Ensure that absolutely-positioned children are positioned relative to this
+  // panel container
+  position: relative;
+  z-index: 1000;
+  margin: 0 auto;
+  margin-top: 50px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  padding: 20px 40px;
+  background-color: #fff;
+  text-align: left;
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.5);
+}
+
+.panel-sign-in input {
+  width: 250px;
+}
+.panel-when input {
+  width: 220px;
+}

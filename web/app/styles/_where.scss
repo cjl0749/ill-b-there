@@ -1,0 +1,52 @@
+// "Where" page with map
+
+.where {
+  // Stretch map to dynamically fit the height of its container
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+  .panel {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+.where-map {
+  flex-grow: 1;
+}
+
+.where-dock-bottom {
+  position: relative;
+  z-index: 1000;
+  min-height: 50px;
+  padding: 10px;
+  background-color: #fff;
+  text-align: left;
+  box-shadow: 0 -1px 5px rgba(#000, 0.5);
+  textarea {
+    width: 100%;
+    margin: 0;
+    font-size: 16px;
+    resize: none;
+    box-sizing: border-box;
+  }
+}
+.where-location {
+  margin-bottom: 4px;
+}
+.where-location-label {
+  font-weight: bold;
+}
+
+.where-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.where button.next-screen-control {
+  width: 50px;
+  height: 50px;
+}
