@@ -17,7 +17,7 @@ RegisterComponent.oninit = function (vnode) {
       state.registering = true;
       var fields = submitEvent.target.elements;
       Users.register({
-        data: {
+        fields: {
           firstname: fields.firstname.value,
           lastname: fields.lastname.value,
           email: fields.email.value,
@@ -32,10 +32,8 @@ RegisterComponent.oninit = function (vnode) {
           state.signingIn = true;
           m.redraw();
           Users.signIn({
-            data: {
-              email: fields.email.value,
-              password: fields.password.value
-            },
+            email: fields.email.value,
+            password: fields.password.value,
             onsuccess: function (user) {
               app.user = user;
               m.route.set('/what');

@@ -20,10 +20,8 @@ SignInComponent.oninit = function (vnode) {
       state.invalid = false;
       state.authenticating = true;
       Users.signIn({
-        data: {
-          email: submitEvent.target.elements.email.value,
-          password: submitEvent.target.elements.password.value
-        },
+        email: submitEvent.target.elements.email.value,
+        password: submitEvent.target.elements.password.value,
         onsuccess: function (user) {
             app.user = user;
             state.redirectToNextScreen();

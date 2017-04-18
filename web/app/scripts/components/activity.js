@@ -14,9 +14,7 @@ ActivityComponent.oncreate = function (vnode) {
       state.fetchError = false;
       state.activity = null;
       Activities.getActivity({
-        data: {
-          id: vnode.attrs.key
-        },
+        id: vnode.attrs.key,
         onsuccess: function (activity) {
           state.loading = false;
           state.fetchError = false;

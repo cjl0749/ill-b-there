@@ -26,7 +26,9 @@ Activities.createActivity = function (args) {
 Activities.getActivity = function (args) {
   Api.get({
     path: '/api/activities/:id',
-    data: args.data,
+    data: {
+      id: args.id
+    },
     onsuccess: args.onsuccess,
     onerror: args.onerror
   });

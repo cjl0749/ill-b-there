@@ -8,7 +8,7 @@ var Users = Object.create(Api);
 Users.register = function (args) {
   Api.post({
     path: '/api/users',
-    data: args.data,
+    data: args.fields,
     onsuccess: function () {
       args.onsuccess();
     },
@@ -40,8 +40,8 @@ Users.signIn = function (args) {
           client_id: 2,
           client_secret: secretKey,
           scope: '',
-          username: args.data.email,
-          password: args.data.password
+          username: args.email,
+          password: args.password
         },
         onsuccess: function (data) {
           Api.authenticate(data.access_token);
