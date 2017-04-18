@@ -1,7 +1,6 @@
 'use strict';
 
 var m = require('mithril');
-var moment = require('moment');
 var Activities = require('../models/activities');
 var LoadingComponent = require('./loading');
 var CompletedComponent = require('./completed');
@@ -24,7 +23,7 @@ ConfirmActivityComponent.oninit = function (vnode) {
       state.creationError = false;
       Activities.createActivity({
         activity: app.activity,
-        onsuccess: function () {
+        onsuccess: function (activity) {
           state.creating = false;
           state.creationError = false;
           state.created = true;
@@ -35,9 +34,9 @@ ConfirmActivityComponent.oninit = function (vnode) {
           m.redraw();
           // Display success message for a moment before redirecting to activity
           // page
-          // setTimeout(function () {
-          //   m.route.set('/activity/:id');
-          // }, 2000);
+          setTimeout(function () {
+            m.route.set('/activity/:key', {key: activity.id});
+          }, 2000);
         },
         onerror: function () {
           state.creating = false;
@@ -45,10 +44,6 @@ ConfirmActivityComponent.oninit = function (vnode) {
           m.redraw();
         }
       });
-    },
-    prettifyDateTime: function (datetimeStr) {
-      return moment(datetimeStr, app.dateTimeFormat)
-        .format('ddd, MMM Do, YYYY [at] h:MMa');
     }
   };
   vnode.state = state;
@@ -70,22 +65,17 @@ ConfirmActivityComponent.view = function (vnode) {
         m('p.error', 'There was an error creating the activity.') : null,
       m('h2', 'Confirm Activity'),
       m('div.confirm-activity-fields', [
-        app.activity.category_name ? [
-          m('label', 'What'),
-          m('div.activity-field-value', app.activity.category_name)
-        ] : null,
+        m('label', 'What'),
+        m('div.activity-field-value', app.activity.category_name),
         app.activity.description ? [
-          m('label', 'Description'),
+          m('label.activity-field-name', 'Description'),
           m('div.activity-field-value', app.activity.description)
         ] : null,
-        app.activity.address ? [
-          m('label', 'Where'),
-          m('div.activity-field-value', app.activity.address)
-        ] : null,
-        app.activity.event_at ? [
-          m('label', 'When'),
-          m('div.activity-field-value', state.prettifyDateTime(app.activity.event_at))
-        ] : null
+        m('label.activity-field-name', 'Where'),
+        m('div.activity-field-value', app.activity.address),
+        m('label.activity-field-name', 'When'),
+        m('div.activity-field-value',
+          Activities.prettifyDateTime(app.activity.event_at, app.dateTimeFormat))
       ]),
       (app.activity.category_name && app.activity.address && app.activity.event_at) ?
         m('button[type=submit]', {

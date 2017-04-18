@@ -8,6 +8,7 @@ var WhatComponent = require('./components/what');
 var WhereComponent = require('./components/where');
 var WhenComponent = require('./components/when');
 var ConfirmActivityComponent = require('./components/confirm-activity');
+var ActivityComponent = require('./components/activity');
 
 m.route(document.querySelector('main'), '/sign-in', {
   '/register': {
@@ -38,6 +39,14 @@ m.route(document.querySelector('main'), '/sign-in', {
   '/confirm-activity': {
     render: function () {
       return m(AppComponent, {ContentComponent: ConfirmActivityComponent});
+    }
+  },
+  '/activity/:key': {
+    render: function () {
+      return m(AppComponent, {
+        key: m.route.param('key'),
+        ContentComponent: ActivityComponent
+      });
     }
   }
 });

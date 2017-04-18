@@ -54,7 +54,7 @@ AppComponent.view = function (vnode) {
     // AppComponent acts as a layout which accepts any arbitrary sub-component
     // for content (this is to avoid duplication of static components, such as
     // the header and footer, across several components); see main.js
-    m(vnode.attrs.ContentComponent, {app: app})
+    m(vnode.attrs.ContentComponent, {app: app, key: vnode.attrs.key})
   ];
 };
 
