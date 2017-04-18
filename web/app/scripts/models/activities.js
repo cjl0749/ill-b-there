@@ -34,8 +34,8 @@ Activities.getActivity = function (args) {
   });
 };
 
-Activities.prettifyDateTime = function (datetimeStr, datetimeFormat) {
-  return moment(datetimeStr, datetimeFormat)
+Activities.prettifyDateTime = function (dateTimeStr, dateTimeFormat) {
+  return moment(dateTimeStr, dateTimeFormat)
     .format('ddd, MMM Do, YYYY [at] h:MMa');
 };
 

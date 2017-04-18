@@ -20,24 +20,24 @@ WhenComponent.oninit = function (vnode) {
       return Math.ceil(numMinutes / state.minuteIncrement) * state.minuteIncrement;
     },
     // Get the initial date/time value for the picker
-    getInitialDateTime: function (datetime) {
+    getInitialDateTime: function (dateTime) {
       if (app.activity.event_at) {
         // Use last-saved date/time if saved
         return moment(app.activity.event_at, app.dateTimeFormat);
       } else {
         // Otherwise, use next 5-minute increment from the current date/time
         return moment({
-          years: datetime.year(),
-          months: datetime.month(),
-          date: datetime.date(),
-          hours: datetime.hour(),
-          minutes: state.roundUpMinutes(datetime.minute())
+          years: dateTime.year(),
+          months: dateTime.month(),
+          date: dateTime.date(),
+          hours: dateTime.hour(),
+          minutes: state.roundUpMinutes(dateTime.minute())
         });
       }
     },
     getFormattedDateTime: function () {
-      var datetime = moment(state.picker.input.value);
-      return datetime.format(app.dateTimeFormat);
+      var dateTime = moment(state.picker.input.value);
+      return dateTime.format(app.dateTimeFormat);
     },
     // Saves the selected date/time to the app data
     saveDateTime: function () {
