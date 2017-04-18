@@ -17,7 +17,7 @@
   flex-grow: 1;
 }
 
-.where-controls {
+.where-dock-bottom {
   position: relative;
   z-index: 1000;
   min-height: 50px;
@@ -38,4 +38,15 @@
 }
 .where-location-label {
   font-weight: bold;
+}
+
+.where-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.where button.next-screen-control {
+  width: 50px;
+  height: 50px;
 }

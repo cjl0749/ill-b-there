@@ -2,6 +2,7 @@
 
 var m = require('mithril');
 var LoadingComponent = require('./loading');
+var NextControlComponent = require('./next-control');
 
 var WhereComponent = {};
 
@@ -98,6 +99,10 @@ WhereComponent.oninit = function (vnode) {
         state.goToUserLocation();
       });
 
+    },
+    proceedToNextScreen: function () {
+      app.save();
+      m.route.set('/when');
     }
   };
   vnode.state = state;
@@ -113,17 +118,22 @@ WhereComponent.view = function (vnode) {
         m(LoadingComponent)
       ]) : null,
     m('div.where-map', {oncreate: state.initializeMap}),
-    m('div.screen-controls.where-controls', [
+    m('div.where-dock-bottom', [
       app.activity.address ?
         m('div.where-location', [
           m('span.where-location-label', 'Chosen Location:'),
           ' ',
           m('span.where-location-address', app.activity.address)
         ]) : null,
-      m('textarea.where-description#where-description', {
-        placeholder: 'Enter any details here (optional)',
-        oninput: state.updateDescription
-      }, app.activity.description)
+      m('div.screen-controls.where-controls', [
+        m('textarea.where-description#where-description', {
+          placeholder: 'Enter any details here (optional)',
+          oninput: state.updateDescription
+        }, app.activity.description),
+        m(NextControlComponent, {
+          onclick: state.proceedToNextScreen
+        })
+      ])
     ])
   ]) : null;
 };

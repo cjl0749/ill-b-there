@@ -19,8 +19,14 @@ module.exports = {
     // Conpile Sass to CSS
     stylesheets: {
       joinTo: {
-        'styles/main.css': ['app/styles/main.scss']
+        'styles/main.css': ['app/styles/main.scss', /^node_modules/]
       }
+    }
+  },
+  npm: {
+    // Include dependency styles as part of built project
+    styles: {
+      flatpickr: ['dist/flatpickr.css']
     }
   },
   modules: {
