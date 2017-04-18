@@ -7,7 +7,7 @@ var SignInComponent = require('./components/sign-in');
 var WhatComponent = require('./components/what');
 var WhereComponent = require('./components/where');
 var WhenComponent = require('./components/when');
-var CreatingActivityComponent = require('./components/confirm-activity');
+var ConfirmActivityComponent = require('./components/confirm-activity');
 
 m.route(document.querySelector('main'), '/sign-in', {
   '/register': {
@@ -37,7 +37,7 @@ m.route(document.querySelector('main'), '/sign-in', {
   },
   '/confirm-activity': {
     render: function () {
-      return m(AppComponent, {ContentComponent: CreatingActivityComponent});
+      return m(AppComponent, {ContentComponent: ConfirmActivityComponent});
     }
   }
 });
