@@ -36,6 +36,7 @@ RegisterComponent.oninit = function (vnode) {
             password: fields.password.value,
             onsuccess: function (user) {
               app.user = user;
+              app.triggerReady();
               m.route.set('/what');
             },
             onerror: function () {

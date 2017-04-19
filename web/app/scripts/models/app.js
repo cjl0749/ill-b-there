@@ -7,6 +7,7 @@ function App() {
   }
   // Callbacks to run when the app is completely ready
   this.readyCallbacks = [];
+  this.ready = false;
 }
 
 // The explicit format of the activity date/time (the format accepted by the
@@ -19,11 +20,17 @@ App.prototype.save = function () {
 
 // Queue up the given callback to run when the app is ready
 App.prototype.onready = function (callback) {
-  this.readyCallbacks.push(callback);
+  // Run callback immediately if app is already ready
+  if (this.ready) {
+    callback();
+  } else {
+    this.readyCallbacks.push(callback);
+  }
 };
 
 // Signify the app is ready by running all of the set ready callbacks
 App.prototype.triggerReady = function () {
+  this.ready = true;
   this.readyCallbacks.forEach(function (callback) {
     callback();
   });

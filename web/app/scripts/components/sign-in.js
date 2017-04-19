@@ -31,6 +31,7 @@ SignInComponent.oninit = function (vnode) {
         password: submitEvent.target.elements.password.value,
         onsuccess: function (user) {
             app.user = user;
+            app.triggerReady();
             state.redirectToNextScreen();
         },
         onerror: function () {
