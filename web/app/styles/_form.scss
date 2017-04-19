@@ -56,6 +56,12 @@ button {
       background-color: lighten($green, 5%);
     }
   }
+  &.dangerous {
+    background-color: $red;
+    &:focus {
+      background-color: lighten($red, 5%);
+    }
+  }
   // Add an 3D inset effect when the user presses the button
   &:hover:active {
     top: 1px;
