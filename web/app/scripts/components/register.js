@@ -67,7 +67,9 @@ RegisterComponent.oninit = function (vnode) {
       return gender.substr(0, 1).toUpperCase() + gender.substr(1);
     }
   };
-  state.getRegisterDropdownOptions();
+  app.onready(function () {
+    state.getRegisterDropdownOptions();
+  });
   vnode.state = state;
 };
 

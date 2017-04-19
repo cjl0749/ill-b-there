@@ -27,6 +27,7 @@ AppComponent.oninit = function (vnode) {
     Users.getCurrentUser({
       onsuccess: function (user) {
         app.user = user;
+        app.triggerReady();
         m.redraw();
       }
     });

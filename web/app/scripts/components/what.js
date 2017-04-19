@@ -41,7 +41,9 @@ WhatComponent.oninit = function (vnode) {
       m.route.set('/where');
     }
   };
-  state.loadCategories();
+  app.onready(function () {
+    state.loadCategories();
+  });
   vnode.state = state;
 };
 
