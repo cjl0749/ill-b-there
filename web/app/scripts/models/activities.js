@@ -34,6 +34,54 @@ Activities.getActivity = function (args) {
   });
 };
 
+// Return true if the given user is the creator of the given activity;
+// otherwise, return false
+Activities.isCreatorOf = function (user, activity) {
+  return activity.creator_id === user.id;
+};
+
+// Return true if the given user is a participant of the given activity;
+// otherwise, return false
+Activities.isParticipantOf = function (user, activity) {
+    return activity.participants.some(function (participant) {
+      return participant.id === user.id;
+    });
+};
+
+
+Activities.joinActivity = function (args) {
+  Api.get({
+    path: '/api/activities/:id/join',
+    data: {
+      id: args.activity.id
+    },
+    onsuccess: args.onsuccess,
+    onerror: args.onerror
+  });
+};
+
+Activities.leaveActivity = function (args) {
+  Api.get({
+    path: '/api/activities/:id/leave',
+    data: {
+      id: args.activity.id
+    },
+    onsuccess: args.onsuccess,
+    onerror: args.onerror
+  });
+};
+
+Activities.deleteActivity = function (args) {
+  Api.delete({
+    path: '/api/activities/:id',
+    data: {
+      id: args.activity.id
+    },
+    onsuccess: args.onsuccess,
+    onerror: args.onerror
+  });
+};
+
 Activities.prettifyDateTime = function (dateTimeStr, dateTimeFormat) {
   return moment(dateTimeStr, dateTimeFormat)
     .format('ddd, MMM Do, YYYY [at] h:MMa');
