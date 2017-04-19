@@ -10,7 +10,14 @@ SignInComponent.oninit = function (vnode) {
   var app = vnode.attrs.app;
   var state = {
     redirectToNextScreen: function () {
-      m.route.set('/what');
+      // If the visitor attempted to access a page that required authentication,
+      // redirect to that page after they sign in
+      if (app.redirectRoute) {
+        m.route.set(app.redirectRoute);
+        delete app.redirectRoute;
+      } else {
+        m.route.set('/what');
+      }
     },
     signIn: function (submitEvent) {
       // Since authentication will be performed asynchronously within
@@ -42,10 +49,13 @@ SignInComponent.oninit = function (vnode) {
 
 SignInComponent.view = function (vnode) {
   var state = vnode.state;
+  var app = vnode.attrs.app;
   return m('div.panel.panel-sign-in', [
     state.invalid ? m('div.row', [
       m('p.error.sign-in-error', 'Incorrect email or password')
     ]) : null,
+    app.redirectRoute && !state.authenticating && !state.invalid ?
+      m('div.row', m('p.error', 'Please sign in to view this page:')) : null,
     m('h2', state.authenticating ? 'Signing In...' : 'Sign In'),
     state.authenticating ?
       m(LoadingComponent) :

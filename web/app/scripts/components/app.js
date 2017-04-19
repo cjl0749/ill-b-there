@@ -19,6 +19,8 @@ AppComponent.oninit = function (vnode) {
     }
   };
   if (!Users.isAuthenticated() && m.route.get() !== '/sign-in' && m.route.get() !== '/register') {
+    // Redirect to the originally-requested page after signing in
+    app.redirectRoute = m.route.get();
     m.route.set('/sign-in');
   }
   if (Users.isAuthenticated()) {
