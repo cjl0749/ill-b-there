@@ -3,6 +3,7 @@
 var m = require('mithril');
 var App = require('../models/app');
 var Users = require('../models/users');
+var ActivityProgressComponent = require('./activity-progress');
 
 // Object for storing application state shared across all routes
 var app = new App();
@@ -58,7 +59,12 @@ AppComponent.view = function (vnode) {
     // AppComponent acts as a layout which accepts any arbitrary sub-component
     // for content (this is to avoid duplication of static components, such as
     // the header and footer, across several components); see main.js
-    m(vnode.attrs.ContentComponent, {app: app, key: vnode.attrs.key})
+    m('div.page-content', m(vnode.attrs.ContentComponent, {
+      app: app,
+      key: vnode.attrs.key
+    })),
+    // A bar that shows where the user is in the activity creation process
+    m(ActivityProgressComponent, {app: app})
   ];
 };
 

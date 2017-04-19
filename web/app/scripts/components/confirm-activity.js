@@ -27,14 +27,17 @@ ConfirmActivityComponent.oninit = function (vnode) {
           state.creating = false;
           state.creationError = false;
           state.created = true;
-          // We can reset the persisted activity data now that the activity has
-          // been created
-          app.activity = {};
-          app.save();
+          // This allows other UI components (like activity-progress) to know if
+          // the activity was created successfully
+          app.activity.created = true;
           m.redraw();
           // Display success message for a moment before redirecting to activity
           // page
           setTimeout(function () {
+            // We can reset the persisted activity data now that the activity
+            // has been created
+            app.activity = {};
+            app.save();
             m.route.set('/activity/:key', {key: activity.id});
           }, 1000);
         },
