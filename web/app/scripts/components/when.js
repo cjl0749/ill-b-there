@@ -13,11 +13,14 @@ WhenComponent.oninit = function (vnode) {
     // The default number of minutes to increment by when changing the time
     // (default is 5 minutes)
     minuteIncrement: 5,
+    // The number of milliseconds in one minute of time
+    MIN_TO_MS: 60000,
     // Get the next minute value (relative to the current minute) that has a
     // minute value divisible by 5 (e.g. if the time is 5:31pm, the rounded time
     // will be 5:35pm, but if the time is 5:35pm, it will stay as such)
-    roundUpMinutes: function (numMinutes) {
-      return Math.ceil(numMinutes / state.minuteIncrement) * state.minuteIncrement;
+    roundUpMinutes: function (timestamp) {
+      var minuteIncrementMs = state.minuteIncrement * state.MIN_TO_MS;
+      return Math.ceil(timestamp / minuteIncrementMs) * minuteIncrementMs;
     },
     // Get the initial date/time value for the picker
     getInitialDateTime: function (dateTime) {
@@ -26,13 +29,13 @@ WhenComponent.oninit = function (vnode) {
         return moment(app.activity.event_at, app.dateTimeFormat);
       } else {
         // Otherwise, use next 5-minute increment from the current date/time
-        return moment({
+        return moment(state.roundUpMinutes(moment({
           years: dateTime.year(),
           months: dateTime.month(),
           date: dateTime.date(),
           hours: dateTime.hour(),
-          minutes: state.roundUpMinutes(dateTime.minute())
-        });
+          minutes: dateTime.minute()
+        }).valueOf()));
       }
     },
     getFormattedDateTime: function () {
