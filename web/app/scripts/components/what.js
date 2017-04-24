@@ -35,12 +35,15 @@ WhatComponent.oninit = function (vnode) {
     // Record the user's choice of category and move to next screen
     setCategory: function (clickEvent, category) {
       clickEvent.preventDefault();
-      app.activity.category = category.id;
+      app.activity.category_name = category.name;
+      app.activity.category_id = category.id;
       app.save();
       m.route.set('/where');
     }
   };
-  state.loadCategories();
+  app.onready(function () {
+    state.loadCategories();
+  });
   vnode.state = state;
 };
 

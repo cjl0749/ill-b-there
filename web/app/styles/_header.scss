@@ -10,7 +10,7 @@ $header-padding-x: 10px;
   padding: 12px $header-padding-x;
   background-color: #fff;
   text-align: left;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 10px rgba(#000, 0.5);
   white-space: nowrap;
 }
 .app-logo {
@@ -34,11 +34,26 @@ $header-padding-x: 10px;
     display: none;
   }
 }
-.user-info {
+.app-header-content {
   flex-grow: 1;
   padding-right: 20px;
   text-align: right;
   .user-full-name {
     display: block;
+  }
+}
+.app-navigation ul {
+  margin: 0;
+  padding: 0;
+  li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+  }
+  // Add pipe between links to separate them
+  li + li:before {
+    content: '|';
+    margin: 0 5px;
+    font-size: 16px;
   }
 }

@@ -21,6 +21,13 @@ main {
   text-align: center;
 }
 
+.page-content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex-grow: 1;
+}
+
 a {
   color: $blue;
   text-decoration: none;
@@ -35,7 +42,16 @@ h1, h2, h3 {
 
 // Error messages
 
-p.error {
+.error {
   color: $red;
   font-weight: bold;
+}
+
+// Icon representing a "completed" process (usually a checkmark)
+img.completed {
+  display: block;
+  $icon-size: 100px;
+  width: $icon-size;
+  height: $icon-size;
+  margin: 0 auto;
 }

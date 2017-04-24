@@ -5,6 +5,31 @@ var Api = require('./api');
 // The Users model inherits all properties and methods from Api
 var Users = Object.create(Api);
 
+Users.register = function (args) {
+  Api.post({
+    path: '/api/users',
+    data: args.fields,
+    onsuccess: function () {
+      args.onsuccess();
+    },
+    onerror: function (error) {
+      args.onerror(error);
+    }
+  });
+};
+
+Users.getRegisterDropdownOptions = function (args) {
+  Api.get({
+    path: '/api/users/create',
+    onsuccess: function (data) {
+      args.onsuccess(data);
+    },
+    onerror: function (error) {
+      args.onerror(error);
+    }
+  });
+};
+
 Users.signIn = function (args) {
   Api.getSecretKey({
     onsuccess: function (secretKey) {
@@ -20,7 +45,14 @@ Users.signIn = function (args) {
         },
         onsuccess: function (data) {
           Api.authenticate(data.access_token);
-          args.onsuccess();
+          Users.getCurrentUser({
+            onsuccess: function (user) {
+              args.onsuccess(user);
+            },
+            onerror: function (error) {
+              args.onerror(error);
+            }
+          });
         },
         onerror: function (error) {
           args.onerror(error);

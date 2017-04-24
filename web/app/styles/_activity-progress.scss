@@ -1,0 +1,44 @@
+.activity-progress-container {
+  position: relative;
+  z-index: 1000;
+}
+
+.activity-progress-bar {
+  padding: 10px 20px;
+  padding-bottom: 6px;
+  background-color: #fff;
+  box-shadow: 0 -1px 10px rgba(#000, 0.25);
+}
+
+.activity-progress-steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.activity-progress-step-number {
+  display: block;
+  $dot-size: 20px;
+  width: $dot-size;
+  height: $dot-size;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-color: $gray;
+  line-height: $dot-size;
+  font-size: 14px;
+  color: darken($gray, 50%);
+  .completed & {
+    background-color: $green;
+    color: #fff;
+  }
+}
+
+.activity-progress-label {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+  color: darken($gray, 50%);
+  .completed & {
+    color: darken($green, 10%);
+  }
+}
