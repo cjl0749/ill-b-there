@@ -7,7 +7,7 @@ var LoadingComponent = require('./loading');
 var ProfileComponent = {};
 
 ProfileComponent.oninit = function (vnode) {
-  /*var app = vnode.attrs.app;
+  var app = vnode.attrs.app;
   var state = {
     categories: null,
     // Load all activity categories asynchronously
@@ -41,34 +41,34 @@ ProfileComponent.oninit = function (vnode) {
     }
   };
   state.loadCategories();
-  vnode.state = state;*/
+  vnode.state = state;
 };
 
 ProfileComponent.view = function (vnode) {
-  /*var state = vnode.state;
-  return m('div.panel.panel-Profile', [
-    m('h2', 'Profile are you interested in?'),
+  var state = vnode.state;
+  return m('div.panel.panel-what', [
+    m('h2', 'What are you interested in?'),
     state.categories ?
-      m('div.Profile-categories', state.categories.map(function (category) {
+      m('div.what-categories', state.categories.map(function (category) {
         var categorySlug = state.getCategorySlug(category);
-        return m('div.Profile-category', {
-          class: 'Profile-category-' + categorySlug
+        return m('div.what-category', {
+          class: 'what-category-' + categorySlug
         }, [
-          m('div.Profile-category-bubble', {
+          m('div.what-category-bubble', {
             onclick: function (clickEvent) {
               state.setCategory(clickEvent, category);
             }
-          }, m('img.Profile-category-icon', {
+          }, m('img.what-category-icon', {
             src: 'images/categories/' + categorySlug + '.svg',
             alt: category.name
           })),
-          m('span.Profile-category-name', category.name)
+          m('span.what-category-name', category.name)
         ]);
       })) :
     state.errorLoading ?
       m('p.error', 'Sorry, categories cannot be loaded at this time.') :
       m(LoadingComponent)
-  ]);*/
+  ]);
 };
 
 module.exports = ProfileComponent;
