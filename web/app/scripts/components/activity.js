@@ -88,6 +88,9 @@ ActivityComponent.view = function (vnode) {
       m('div.activity-details', [
         m('span.activity-creator-name',
           'by ' + state.activity.creator.firstname + ' ' + state.activity.creator.lastname),
+        state.activity.participants.length === 1 ?
+          m('span.activity-participant-count', '1 Participant') :
+          m('span.activity-participant-count', state.activity.participants.length + ' Participants'),
         state.activity.description ? [
           m('label.activity-field-name', 'Description'),
           m('div.activity-field-value', state.activity.description)
