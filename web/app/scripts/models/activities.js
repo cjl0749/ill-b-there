@@ -14,6 +14,18 @@ Activities.getCategories = function (args) {
   });
 };
 
+Activities.getNearbyActivities = function (args) {
+  Api.get({
+    path: '/api/activities',
+    data: {
+      latitude: args.latitude,
+      longitude: args.longitude
+    },
+    onsuccess: args.onsuccess,
+    onerror: args.onerror
+  });
+};
+
 Activities.createActivity = function (args) {
   Api.post({
     path: '/api/activities',
