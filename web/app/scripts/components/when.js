@@ -15,10 +15,11 @@ WhenComponent.oninit = function (vnode) {
     minuteIncrement: 5,
     // The number of milliseconds in one minute of time
     MIN_TO_MS: 60000,
-    // Get the next minute value (relative to the current minute) that has a
-    // minute value divisible by 5 (e.g. if the time is 5:31pm, the rounded time
-    // will be 5:35pm, but if the time is 5:35pm, it will stay as such)
+    // Round up the minutes in the given date/time to the next multiple of 5
+    // (e.g. if the time is 5:31pm, the rounded time will be 5:35pm, but if the
+    // time is 5:35pm, it will stay as such)
     roundUpMinutes: function (timestamp) {
+      // timestamp is a number of milliseconds since January 1st, 1970
       var minuteIncrementMs = state.minuteIncrement * state.MIN_TO_MS;
       return Math.ceil(timestamp / minuteIncrementMs) * minuteIncrementMs;
     },
