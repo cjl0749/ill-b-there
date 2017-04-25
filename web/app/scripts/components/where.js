@@ -1,6 +1,7 @@
 'use strict';
 
 var m = require('mithril');
+var Activities = require('../models/activities');
 var LoadingComponent = require('./loading');
 var NextControlComponent = require('./next-control');
 
@@ -11,10 +12,13 @@ WhereComponent.oninit = function (vnode) {
   var state = {
     // A number of milliseconds used to determine when the user stops typing
     debounceDelay: 500,
+    // The dimensions of the pin icon used to represent locations on the map
+    markerWidth: 22,
+    markerHeight: 40,
     // Set the location of the in-progress activity to the location residing at
     // the marker's current position
     updateActivityLocation: function () {
-      var markerPosition = state.marker.getPosition();
+      var markerPosition = state.currentLocationMarker.getPosition();
       state.geocoder.geocode({
         location: markerPosition
       }, function (results, geocodeStatus) {
@@ -48,7 +52,7 @@ WhereComponent.oninit = function (vnode) {
             position.coords.longitude
           );
           state.map.setCenter(newPosition);
-          state.marker.setPosition(newPosition);
+          state.currentLocationMarker.setPosition(newPosition);
           state.map.setZoom(16);
           state.updateActivityLocation();
           m.redraw();
@@ -61,6 +65,38 @@ WhereComponent.oninit = function (vnode) {
       } else {
         state.geolocating = false;
       }
+    },
+    displayNearbyActivity: function (activity) {
+      var nearbyActivityMarker = new google.maps.Marker({
+        map: state.map,
+        position: new google.maps.LatLng(activity.latitude, activity.longitude),
+        icon: {
+          // Use a blue pin to represent an existing, nearby activity
+          url: 'images/pin-blue.png',
+          scaledSize: new google.maps.Size(state.markerWidth, state.markerHeight)
+        }
+      });
+      // Clicking a blue
+      nearbyActivityMarker.addListener('click', function () {
+        window.open('#!/activity/' + activity.id);
+      });
+    },
+    loadNearbyActivities: function () {
+      var currentPosition = state.currentLocationMarker.getPosition();
+      Activities.getNearbyActivities({
+        latitude: currentPosition.lat(),
+        longitude: currentPosition.lng(),
+        onsuccess: function (activities) {
+          state.nearbyActivities = activities;
+          state.nearbyActivities.forEach(function (activity) {
+            state.displayNearbyActivity(activity);
+          });
+          m.redraw();
+        },
+        onerror: function () {
+          // No need to do anything special if there's an error
+        }
+      });
     },
     initializeMap: function (mapVnode) {
 
@@ -86,18 +122,25 @@ WhereComponent.oninit = function (vnode) {
       state.geocoder = new google.maps.Geocoder();
 
       // Location marker is represented as a draggable drop-pin on the map
-      state.marker = new google.maps.Marker({
+      state.currentLocationMarker = new google.maps.Marker({
         map: state.map,
         position: initialPosition,
-        draggable: true
+        draggable: true,
+        icon: {
+          // Use a red pin to represent the
+          url: 'images/pin-red.png',
+          scaledSize: new google.maps.Size(state.markerWidth, state.markerHeight)
+        }
       });
-      state.marker.addListener('dragend', state.updateActivityLocation);
+      state.currentLocationMarker.addListener('dragend', state.updateActivityLocation);
 
       google.maps.event.addListenerOnce(state.map, 'tilesloaded', function () {
         // Ask user for their current location and, if granted, center map at
         // that location (but only after the map has loaded)
         state.goToUserLocation();
       });
+
+      state.loadNearbyActivities();
 
     },
     proceedToNextScreen: function () {
