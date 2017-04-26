@@ -30,6 +30,10 @@ Users.getRegisterDropdownOptions = function (args) {
   });
 };
 
+Users.capitalizeGender = function (gender) {
+  return gender.substr(0, 1).toUpperCase() + gender.substr(1);
+};
+
 Users.signIn = function (args) {
   Api.getSecretKey({
     onsuccess: function (secretKey) {

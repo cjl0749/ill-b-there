@@ -1,7 +1,8 @@
 'use strict';
 
 var m = require('mithril');
-var Activities = require('../models/activities');
+var moment = require('moment');
+var Users = require('../models/users');
 var LoadingComponent = require('./loading');
 
 var ProfileComponent = {};
@@ -11,19 +12,20 @@ ProfileComponent.oninit = function (vnode) {
 
   app.onready(function () {
     m.redraw();
-    console.log(app.user);
   });
 };
 
 ProfileComponent.view = function (vnode) {
-  var state = vnode.state;
   var app = vnode.attrs.app;
-  return m('div.panel', app.user ? [
+  return m('div.panel.panel-profile', app.user ? [
     m('h2.user-name', app.user.firstname + ' ' + app.user.lastname),
-    m('span.birthdate', app.user.birthdate),
+    m('label', 'Email'),
     m('span.email', app.user.email),
-    m('span.gender', app.user.gender)
-  ] : null);
+    m('label', 'Birthday'),
+    m('span.birthdate', moment(app.user.birthdate).format('MMM Mo, YYYY')),
+    m('label', 'Gender'),
+    m('span.gender', Users.capitalizeGender(app.user.gender))
+  ] : m(LoadingComponent));
 };
 
 module.exports = ProfileComponent;

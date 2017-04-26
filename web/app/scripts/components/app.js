@@ -50,6 +50,7 @@ AppComponent.view = function (vnode) {
         m('nav.app-navigation', m('ul', [
           Users.isAuthenticated() ? [
             m('li', m('a[href=#!/what]', 'Create Activity')),
+            m('li', m('a[href=#!/profile]', 'Profile')),
             m('li', m('a[href=#]', {onclick: state.signOut}, 'Sign Out'))
           ] :
           m.route.get() === '/sign-in' ?
