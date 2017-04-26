@@ -19,8 +19,10 @@ ProfileComponent.view = function (vnode) {
   var state = vnode.state;
   var app = vnode.attrs.app;
   return m('div.panel', app.user ? [
-    m('h2.first-name', app.user.firstname),
-    m('h2.last-name', app.user.lastname)
+    m('h2.user-name', app.user.firstname + ' ' + app.user.lastname),
+    m('span.birthdate', app.user.birthdate),
+    m('span.email', app.user.email),
+    m('span.gender', app.user.gender)
   ] : null);
 };
 
