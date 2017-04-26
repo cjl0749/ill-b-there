@@ -63,9 +63,6 @@ RegisterComponent.oninit = function (vnode) {
           // do nothing for now
         }
       });
-    },
-    capitalizeGender: function (gender) {
-      return gender.substr(0, 1).toUpperCase() + gender.substr(1);
     }
   };
   app.onready(function () {
@@ -125,7 +122,7 @@ RegisterComponent.view = function (vnode) {
         m('select#user-gender[name=gender][required]', [
           m('option', ''),
           state.genders ? state.genders.map(function (gender) {
-            return m('option', {value: gender}, state.capitalizeGender(gender));
+            return m('option', {value: gender}, Users.capitalizeGender(gender));
           }) : null
         ])
       ]),
