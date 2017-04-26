@@ -22,7 +22,7 @@ ProfileComponent.view = function (vnode) {
     m('label', 'Email'),
     m('span.email', app.user.email),
     m('label', 'Birthday'),
-    m('span.birthdate', moment(app.user.birthdate).format('MMM Mo, YYYY')),
+    m('span.birthdate', moment(app.user.birthdate).format('MMMM Mo, YYYY')),
     m('label', 'Gender'),
     m('span.gender', Users.capitalizeGender(app.user.gender))
   ] : m(LoadingComponent));
