@@ -1,5 +1,15 @@
 # i'll-b-there
 
+## About
+
+I'll B There is a short-term event planning service, with an emphasis on socializing and meeting new people. Suppose you want to see a movie this evening, or go out to lunch the next day. I'll B There helps you share and connect with others in your area, whatever the activity.
+
+![What](screenshots/1-what.png)
+![Where](screenshots/2-where.png)
+![When](screenshots/3-when.png)
+![Confirm](screenshots/4-confirm.png)
+![Activity](screenshots/5-created.png)
+
 ## Webservice setup
 
  - [Composer](https://getcomposer.org/download/) is required to install the project.
