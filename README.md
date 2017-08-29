@@ -8,7 +8,7 @@ I'll B There is a short-term event planning service, with an emphasis on sociali
 ![Where](screenshots/2-where.png)
 ![When](screenshots/3-when.png)
 ![Confirm](screenshots/4-confirm.png)
-![Activity](screenshots/5-created.png)
+![Activity](screenshots/5-activity.png)
 
 ## Webservice setup
 
