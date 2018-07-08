@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\User;
 use App\Models\Nationality;
@@ -217,6 +219,7 @@ class UserController extends Controller
 
 		return $user;
     }
+
 
     /**
      * @api {delete} /users/:id Delete an user

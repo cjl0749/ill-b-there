@@ -39,10 +39,14 @@ Route::group(['middleware' => ['auth:api']], function()
 
 	Route::group(['prefix' => '/activities'], function()
 	{
+        Route::get('/future', ['uses' => 'ActivityController@userFutureActivities']);
+        Route::get('/past', ['uses' => 'ActivityController@userPastActivities']);
+
 		Route::group(['prefix' => '/{activity}'], function()
 		{
 			Route::get('/join', ['uses' => 'ActivityController@join']);
 			Route::get('/leave', ['uses' => 'ActivityController@leave']);
+            Route::post('/feedback', ['uses' => 'ActivityController@giveFeedback']);
 		});
 	});
 	Route::resource('activities', 'ActivityController');

@@ -82,4 +82,13 @@ class ActivityPolicy
     {
 		return $activity->participants->contains($user->id) && $activity->creator_id != $user->id;
     }
+
+    /**
+     * @param User $user
+     * @param Activity $activity
+     */
+    public function feedback(User $user, Activity $activity)
+    {
+        return $activity->participants->contains($user->id);
+    }
 }
